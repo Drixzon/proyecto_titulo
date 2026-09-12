@@ -2,39 +2,50 @@ import { useEffect, useState } from "react";
 import {
   addDoc,
   collection,
+  doc,
   getDocs,
+  orderBy,
+  query,
   serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 
 import { auth, db } from "../services/firebase";
 
-function GestionEventos() {
-  const [nombre, setNombre] = useState("");
-  const [lugar, setLugar] = useState("");
-  const [fechaInicio, setFechaInicio] = useState("");
-  const [fechaTermino, setFechaTermino] = useState("");
-  const [estado, setEstado] = useState("planificado");
+const formularioInicial = {
+  nombre: "",
+  descripcion: "",
+  ubicacion: "",
+  capacidad: "",
+  fechaInicio: "",
+  fechaTermino: "",
+  estado: "planificado",
+};
 
+function GestionEventos() {
+  const [formulario, setFormulario] = useState(formularioInicial);
   const [eventos, setEventos] = useState([]);
+  const [eventoEditandoId, setEventoEditandoId] = useState(null);
   const [mensaje, setMensaje] = useState("");
   const [guardando, setGuardando] = useState(false);
 
   const cargarEventos = async () => {
     try {
-      const consulta = await getDocs(collection(db, "eventos"));
+      const consulta = query(
+        collection(db, "eventos"),
+        orderBy("fechaCreacion", "desc")
+      );
 
-      const listaEventos = consulta.docs.map((documento) => ({
+      const resultado = await getDocs(consulta);
+
+      const listaEventos = resultado.docs.map((documento) => ({
         id: documento.id,
         ...documento.data(),
       }));
 
-      listaEventos.sort((a, b) =>
-        a.fechaInicio.localeCompare(b.fechaInicio)
-      );
-
       setEventos(listaEventos);
     } catch (error) {
-      console.error("Error al cargar eventos:", error);
+      console.error("Error al cargar los eventos:", error);
       setMensaje("No fue posible cargar los eventos.");
     }
   };
@@ -43,100 +54,211 @@ function GestionEventos() {
     cargarEventos();
   }, []);
 
-  const guardarEvento = async (event) => {
-    event.preventDefault();
+  const actualizarCampo = (evento) => {
+    const { name, value } = evento.target;
+
+    setFormulario({
+      ...formulario,
+      [name]: value,
+    });
+  };
+
+  const validarFormulario = () => {
+    if (
+      !formulario.nombre ||
+      !formulario.descripcion ||
+      !formulario.ubicacion ||
+      !formulario.capacidad ||
+      !formulario.fechaInicio ||
+      !formulario.fechaTermino
+    ) {
+      setMensaje("Debes completar todos los campos.");
+      return false;
+    }
+
+    if (Number(formulario.capacidad) <= 0) {
+      setMensaje("La capacidad debe ser mayor que cero.");
+      return false;
+    }
+
+    if (formulario.fechaTermino < formulario.fechaInicio) {
+      setMensaje("La fecha final no puede ser anterior a la fecha inicial.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const guardarEvento = async (evento) => {
+    evento.preventDefault();
     setMensaje("");
 
-    if (!nombre || !lugar || !fechaInicio || !fechaTermino) {
-      setMensaje("Todos los campos son obligatorios.");
+    if (!validarFormulario()) {
       return;
     }
 
-    if (fechaTermino < fechaInicio) {
-      setMensaje("La fecha de término no puede ser anterior al inicio.");
-      return;
-    }
+    const datosEvento = {
+      nombre: formulario.nombre.trim(),
+      descripcion: formulario.descripcion.trim(),
+      ubicacion: formulario.ubicacion.trim(),
+      capacidad: Number(formulario.capacidad),
+      fechaInicio: formulario.fechaInicio,
+      fechaTermino: formulario.fechaTermino,
+      estado: formulario.estado,
+    };
 
     try {
       setGuardando(true);
 
-      await addDoc(collection(db, "eventos"), {
-        nombre,
-        lugar,
-        fechaInicio,
-        fechaTermino,
-        estado,
-        creadoPor: auth.currentUser.uid,
-        fechaCreacion: serverTimestamp(),
-      });
+      if (eventoEditandoId) {
+        const referenciaEvento = doc(db, "eventos", eventoEditandoId);
 
-      setNombre("");
-      setLugar("");
-      setFechaInicio("");
-      setFechaTermino("");
-      setEstado("planificado");
-      setMensaje("Evento guardado correctamente.");
+        await updateDoc(referenciaEvento, {
+          ...datosEvento,
+          actualizadoPor: auth.currentUser.uid,
+          fechaActualizacion: serverTimestamp(),
+        });
+
+        setMensaje("Evento actualizado correctamente.");
+      } else {
+        await addDoc(collection(db, "eventos"), {
+          ...datosEvento,
+          creadoPor: auth.currentUser.uid,
+          fechaCreacion: serverTimestamp(),
+        });
+
+        setMensaje("Evento guardado correctamente.");
+      }
+
+      setFormulario(formularioInicial);
+      setEventoEditandoId(null);
 
       await cargarEventos();
     } catch (error) {
-      console.error("Error al guardar evento:", error);
+      console.error("Error al guardar el evento:", error);
       setMensaje("No fue posible guardar el evento.");
     } finally {
       setGuardando(false);
     }
   };
 
+  const editarEvento = (evento) => {
+    setFormulario({
+      nombre: evento.nombre || "",
+      descripcion: evento.descripcion || "",
+      ubicacion: evento.ubicacion || "",
+      capacidad: evento.capacidad || "",
+      fechaInicio: evento.fechaInicio || "",
+      fechaTermino: evento.fechaTermino || "",
+      estado: evento.estado || "planificado",
+    });
+
+    setEventoEditandoId(evento.id);
+    setMensaje("Editando el evento seleccionado.");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const cancelarEdicion = () => {
+    setFormulario(formularioInicial);
+    setEventoEditandoId(null);
+    setMensaje("");
+  };
+
   return (
     <section>
       <h2>Gestión de eventos</h2>
+      <p>Crea y consulta los eventos registrados en el sistema.</p>
 
       <form className="form-evento" onSubmit={guardarEvento}>
         <label htmlFor="nombre">Nombre del evento</label>
         <input
           id="nombre"
+          name="nombre"
           type="text"
-          value={nombre}
-          onChange={(event) => setNombre(event.target.value)}
+          value={formulario.nombre}
+          onChange={actualizarCampo}
         />
 
-        <label htmlFor="lugar">Lugar</label>
+        <label htmlFor="descripcion">Descripción</label>
+        <textarea
+          id="descripcion"
+          name="descripcion"
+          rows="4"
+          value={formulario.descripcion}
+          onChange={actualizarCampo}
+        />
+
+        <label htmlFor="ubicacion">Ubicación</label>
         <input
-          id="lugar"
+          id="ubicacion"
+          name="ubicacion"
           type="text"
-          value={lugar}
-          onChange={(event) => setLugar(event.target.value)}
+          value={formulario.ubicacion}
+          onChange={actualizarCampo}
+        />
+
+        <label htmlFor="capacidad">Capacidad</label>
+        <input
+          id="capacidad"
+          name="capacidad"
+          type="number"
+          min="1"
+          value={formulario.capacidad}
+          onChange={actualizarCampo}
         />
 
         <label htmlFor="fechaInicio">Fecha de inicio</label>
         <input
           id="fechaInicio"
+          name="fechaInicio"
           type="date"
-          value={fechaInicio}
-          onChange={(event) => setFechaInicio(event.target.value)}
+          value={formulario.fechaInicio}
+          onChange={actualizarCampo}
         />
 
         <label htmlFor="fechaTermino">Fecha de término</label>
         <input
           id="fechaTermino"
+          name="fechaTermino"
           type="date"
-          value={fechaTermino}
-          onChange={(event) => setFechaTermino(event.target.value)}
+          value={formulario.fechaTermino}
+          onChange={actualizarCampo}
         />
 
         <label htmlFor="estado">Estado</label>
         <select
           id="estado"
-          value={estado}
-          onChange={(event) => setEstado(event.target.value)}
+          name="estado"
+          value={formulario.estado}
+          onChange={actualizarCampo}
         >
           <option value="planificado">Planificado</option>
           <option value="activo">Activo</option>
           <option value="finalizado">Finalizado</option>
+          <option value="cancelado">Cancelado</option>
         </select>
 
         <button type="submit" disabled={guardando}>
-          {guardando ? "Guardando..." : "Guardar evento"}
+          {guardando
+            ? "Guardando..."
+            : eventoEditandoId
+              ? "Actualizar evento"
+              : "Guardar evento"}
         </button>
+
+        {eventoEditandoId && (
+          <button
+            className="boton-cancelar"
+            type="button"
+            onClick={cancelarEdicion}
+          >
+            Cancelar edición
+          </button>
+        )}
       </form>
 
       {mensaje && <p className="mensaje-evento">{mensaje}</p>}
@@ -151,10 +273,12 @@ function GestionEventos() {
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Lugar</th>
+                <th>Ubicación</th>
+                <th>Capacidad</th>
                 <th>Inicio</th>
                 <th>Término</th>
                 <th>Estado</th>
+                <th>Acciones</th>
               </tr>
             </thead>
 
@@ -162,10 +286,20 @@ function GestionEventos() {
               {eventos.map((evento) => (
                 <tr key={evento.id}>
                   <td>{evento.nombre}</td>
-                  <td>{evento.lugar}</td>
+                  <td>{evento.ubicacion}</td>
+                  <td>{evento.capacidad}</td>
                   <td>{evento.fechaInicio}</td>
                   <td>{evento.fechaTermino}</td>
                   <td>{evento.estado}</td>
+                  <td>
+                    <button
+                      className="boton-editar"
+                      type="button"
+                      onClick={() => editarEvento(evento)}
+                    >
+                      Editar
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -52,21 +52,21 @@ function Login() {
     <main className="login-page">
       <section className="login-information">
         <div className="brand">
-          <span className="brand-icon">EC</span>
+          <span className="brand-icon">ECONTROL</span>
           <span>EventControl</span>
         </div>
 
         <div className="information-content">
           <p className="eyebrow">Gestión de eventos</p>
-          <h1>Control organizado desde la inscripción hasta el almuerzo.</h1>
+          <h1>Control organizado de Eventos.</h1>
           <p>
             Administra eventos, jornadas, participantes, asistencias y
-            beneficios desde un único sistema.
+            beneficios desde un único sistema. 
           </p>
         </div>
 
         <p className="information-footer">
-          Proyecto de título · Ingeniería Informática
+          Proyecto de título · Ingeniería Informática IPLACEX
         </p>
       </section>
 

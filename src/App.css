@@ -1,7 +1,81 @@
+/* =========================================================
+   1. CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+/*
+  Define la fuente, los colores generales y fuerza el modo claro.
+  Esto evita que Vite aplique automáticamente el fondo oscuro.
+*/
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172f3f;
+  background: #f4f7fb;
+  color-scheme: light;
+  font-synthesis: none;
+}
+
+/*
+  Hace que el ancho y alto de los elementos incluyan
+  el padding y los bordes.
+*/
+* {
+  box-sizing: border-box;
+}
+
+/*
+  Asegura que la aplicación ocupe todo el ancho y alto
+  disponible en el navegador.
+*/
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+/*
+  Elimina la configuración predeterminada de Vite,
+  que centra todo el contenido y utiliza fondo oscuro.
+*/
+body {
+  min-height: 100vh;
+  display: block;
+  background: #f4f7fb;
+}
+
+/*
+  Hace que los campos y botones utilicen la misma fuente
+  definida para toda la aplicación.
+*/
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
 #root {
   min-height: 100vh;
 }
 
+
+/* =========================================================
+   2. PÁGINA DE INICIO DE SESIÓN
+   ========================================================= */
+
+/*
+  Divide la pantalla del login en dos columnas:
+  información institucional y formulario de acceso.
+*/
 .login-page {
   min-height: 100vh;
   display: grid;
@@ -9,6 +83,10 @@
   background: #f4f7fb;
 }
 
+/*
+  Columna izquierda del login.
+  Contiene la presentación y descripción de EventControl.
+*/
 .login-information {
   display: flex;
   flex-direction: column;
@@ -16,10 +94,18 @@
   padding: 48px 64px;
   color: #ffffff;
   background:
-    radial-gradient(circle at 15% 20%, rgba(37, 173, 223, 0.32), transparent 30%),
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(37, 173, 223, 0.32),
+      transparent 30%
+    ),
     linear-gradient(145deg, #082c4c, #0b4d75);
 }
 
+/*
+  Marca de EventControl utilizada en el login
+  de escritorio y en dispositivos móviles.
+*/
 .brand,
 .mobile-brand {
   display: flex;
@@ -29,9 +115,13 @@
   font-weight: 700;
 }
 
+/*
+  Cuadro pequeño con las iniciales EC.
+*/
 .brand-icon {
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   border-radius: 13px;
@@ -45,6 +135,9 @@
   max-width: 620px;
 }
 
+/*
+  Texto pequeño que aparece antes del título principal.
+*/
 .eyebrow {
   margin: 0 0 12px;
   color: #2ba7d6;
@@ -77,12 +170,23 @@
   font-size: 0.9rem;
 }
 
+
+/* =========================================================
+   3. TARJETA Y FORMULARIO DEL LOGIN
+   ========================================================= */
+
+/*
+  Columna derecha que centra la tarjeta del login.
+*/
 .login-access {
   display: grid;
   place-items: center;
   padding: 40px;
 }
 
+/*
+  Tarjeta blanca que contiene el formulario.
+*/
 .login-card {
   width: min(100%, 430px);
   padding: 44px;
@@ -92,6 +196,10 @@
   box-shadow: 0 24px 60px rgba(9, 47, 75, 0.12);
 }
 
+/*
+  Esta marca se oculta en escritorio y se muestra
+  solamente cuando desaparece la columna informativa.
+*/
 .mobile-brand {
   display: none;
   margin-bottom: 38px;
@@ -110,6 +218,9 @@
   line-height: 1.6;
 }
 
+/*
+  Organiza cada etiqueta y campo del login verticalmente.
+*/
 .form-group {
   display: flex;
   flex-direction: column;
@@ -130,12 +241,15 @@
   border-radius: 10px;
   color: #172f3f;
   background: #ffffff;
-  font: inherit;
-  box-sizing: border-box;
   outline: none;
-  transition: 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+/*
+  Resalta el campo que el usuario está utilizando.
+*/
 .form-group input:focus {
   border-color: #178fc0;
   box-shadow: 0 0 0 4px rgba(23, 143, 192, 0.12);
@@ -149,10 +263,8 @@
   border-radius: 10px;
   color: #ffffff;
   background: #0b5f89;
-  font: inherit;
   font-weight: 800;
   cursor: pointer;
-  transition: 0.2s ease;
 }
 
 .login-card button:hover {
@@ -165,6 +277,11 @@
   opacity: 0.65;
 }
 
+
+/* =========================================================
+   4. MENSAJES DEL LOGIN
+   ========================================================= */
+
 .message {
   margin: 12px 0;
   padding: 12px 14px;
@@ -172,11 +289,17 @@
   font-size: 0.88rem;
 }
 
+/*
+  Mensaje mostrado cuando ocurre un error.
+*/
 .message.error {
   color: #a72828;
   background: #fdecec;
 }
 
+/*
+  Mensaje mostrado cuando una operación es exitosa.
+*/
 .message.exito {
   color: #15683c;
   background: #e7f7ed;
@@ -189,6 +312,511 @@
   text-align: center;
 }
 
+
+/* =========================================================
+   5. PANEL DE ADMINISTRACIÓN
+   ========================================================= */
+
+/*
+  Mensaje temporal mientras Firebase comprueba la sesión.
+*/
+.loading {
+  margin-top: 50px;
+  color: #263d4c;
+  text-align: center;
+}
+
+.panel {
+  min-height: 100vh;
+  color: #172f3f;
+  background: #f4f7fb;
+}
+
+/*
+  Cabecera superior del panel.
+*/
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 30px;
+  color: #ffffff;
+  background: #0b5f89;
+}
+
+.panel-header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.panel-header button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  color: #17324d;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.panel-header button:hover {
+  background: #eaf3f8;
+}
+
+/*
+  Menú que permite cambiar entre inicio, eventos y jornadas.
+*/
+.panel-nav {
+  padding: 10px 30px;
+  border-bottom: 1px solid #cccccc;
+  background: #ffffff;
+}
+
+.panel-nav button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border: 1px solid #0b5f89;
+  border-radius: 4px;
+  color: #0b5f89;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.panel-nav button:hover {
+  color: #ffffff;
+  background: #0b5f89;
+}
+
+/*
+  Espacio principal donde se muestran los módulos.
+*/
+.panel-content {
+  padding: 30px;
+}
+
+
+/* =========================================================
+   6. FORMULARIOS DE EVENTOS Y JORNADAS
+   ========================================================= */
+
+/*
+  Esta clase se utiliza tanto en GestionEventos
+  como en GestionJornadas.
+*/
+.form-evento {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 8px;
+  margin: 25px 0;
+}
+
+.form-evento label {
+  margin-top: 5px;
+  color: #263d4c;
+  font-weight: 600;
+}
+
+.form-evento input,
+.form-evento textarea,
+.form-evento select {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  color: #172f3f;
+  background: #ffffff;
+  outline: none;
+}
+
+.form-evento input:focus,
+.form-evento textarea:focus,
+.form-evento select:focus {
+  border-color: #178fc0;
+  box-shadow: 0 0 0 3px rgba(23, 143, 192, 0.12);
+}
+
+.form-evento textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-evento button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #0b5f89;
+  cursor: pointer;
+}
+
+.form-evento button:hover {
+  background: #084b6e;
+}
+
+.form-evento button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/*
+  Mensaje mostrado después de guardar o modificar
+  un evento o una jornada.
+*/
+.mensaje-evento {
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #17623c;
+  background: #e7f5eb;
+}
+
+
+/* =========================================================
+   7. TABLAS DE EVENTOS Y JORNADAS
+   ========================================================= */
+
+/*
+  Permite desplazar horizontalmente las tablas
+  cuando la pantalla es pequeña.
+*/
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla-eventos {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.tabla-eventos th,
+.tabla-eventos td {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  text-align: left;
+}
+
+.tabla-eventos th {
+  color: #ffffff;
+  background: #0b5f89;
+}
+
+.tabla-eventos tbody tr:nth-child(even) {
+  background: #f6f9fb;
+}
+
+.tabla-eventos tbody tr:hover {
+  background: #edf6fa;
+}
+
+
+/* =========================================================
+   8. BOTONES DE EDICIÓN
+   ========================================================= */
+
+.boton-editar {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #16739c;
+  cursor: pointer;
+}
+
+.boton-editar:hover {
+  background: #0b5f89;
+}
+
+/*
+  Se utiliza cuando el administrador decide
+  abandonar la edición de un evento.
+*/
+.form-evento .boton-cancelar {
+  margin-top: 0;
+  color: #333333;
+  background: #dddddd;
+}
+
+.form-evento .boton-cancelar:hover {
+  background: #cccccc;
+}
+
+
+/* =========================================================
+   9. PÁGINA PÚBLICA DE INSCRIPCIÓN
+   ========================================================= */
+
+/*
+  Centra la tarjeta de inscripción y aplica
+  un fondo claro con un degradado decorativo.
+*/
+.inscripcion-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 35px 20px;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(43, 167, 214, 0.18),
+      transparent 28%
+    ),
+    #f4f7fb;
+}
+
+/*
+  Tarjeta principal de la inscripción pública.
+*/
+.inscripcion-card {
+  width: min(100%, 620px);
+  padding: 38px;
+  border: 1px solid #dfe8ee;
+  border-radius: 20px;
+  color: #172f3f;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(9, 47, 75, 0.12);
+}
+
+/*
+  Marca ubicada al comienzo de la inscripción.
+*/
+.inscripcion-marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.inscripcion-marca h1,
+.inscripcion-marca p {
+  margin: 0;
+}
+
+.inscripcion-marca h1 {
+  color: #0b3c60;
+  font-size: 1.35rem;
+}
+
+.inscripcion-marca p {
+  margin-top: 3px;
+  color: #71818c;
+  font-size: 0.85rem;
+}
+
+.inscripcion-card h2 {
+  margin: 0;
+  color: #102a3d;
+  font-size: 1.8rem;
+}
+
+.inscripcion-descripcion {
+  margin: 10px 0 28px;
+  color: #657683;
+}
+
+
+/* =========================================================
+   10. FORMULARIO DE INSCRIPCIÓN
+   ========================================================= */
+
+/*
+  Organiza verticalmente todos los campos.
+  Esta regla corrige el problema donde aparecían
+  todos los campos en una sola fila.
+*/
+.form-inscripcion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-inscripcion label {
+  margin-top: 10px;
+  color: #263d4c;
+  font-weight: 700;
+}
+
+.form-inscripcion input,
+.form-inscripcion select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #cad6de;
+  border-radius: 8px;
+  color: #172f3f;
+  background: #ffffff;
+  outline: none;
+}
+
+.form-inscripcion input:focus,
+.form-inscripcion select:focus {
+  border-color: #178fc0;
+  box-shadow: 0 0 0 4px rgba(23, 143, 192, 0.12);
+}
+
+.form-inscripcion button {
+  margin-top: 22px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #0b5f89;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-inscripcion button:hover {
+  background: #084b6e;
+}
+
+.form-inscripcion button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   11. INFORMACIÓN DEL EVENTO SELECCIONADO
+   ========================================================= */
+
+.evento-seleccionado {
+  margin: 8px 0;
+  padding: 13px;
+  border-left: 4px solid #178fc0;
+  border-radius: 5px;
+  background: #edf7fb;
+}
+
+.evento-seleccionado p {
+  margin: 4px 0;
+}
+
+
+/* =========================================================
+   12. MENSAJES DE LA INSCRIPCIÓN
+   ========================================================= */
+
+.mensaje-inscripcion {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 7px;
+}
+
+.mensaje-inscripcion.exito {
+  color: #17623c;
+  background: #e7f7ed;
+}
+
+.mensaje-inscripcion.error {
+  color: #9d2929;
+  background: #fdecec;
+}
+
+
+/* =========================================================
+   13. CONFIRMACIÓN Y CÓDIGO QR
+   ========================================================= */
+
+/*
+  Contenedor mostrado después de guardar correctamente
+  una inscripción.
+*/
+.codigo-confirmacion {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #b9dfc7;
+  border-radius: 10px;
+  text-align: center;
+  background: #effaf3;
+}
+
+.codigo-confirmacion h3 {
+  margin: 0 0 8px;
+  color: #17623c;
+}
+
+.codigo-confirmacion p {
+  margin: 6px 0;
+}
+
+.codigo-confirmacion strong {
+  display: block;
+  margin: 12px 0;
+  color: #0b5f89;
+  overflow-wrap: anywhere;
+}
+
+/*
+  Centra la imagen QR dentro de la confirmación.
+*/
+.contenedor-qr {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.contenedor-qr canvas {
+  max-width: 100%;
+  height: auto;
+  border: 8px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(9, 47, 75, 0.14);
+}
+
+.codigo-texto {
+  color: #657683;
+  font-size: 0.9rem;
+}
+
+/*
+  Botón que convierte el Canvas del QR
+  en una imagen PNG descargable.
+*/
+.boton-descargar-qr {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #17623c;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton-descargar-qr:hover {
+  background: #104d2e;
+}
+
+/*
+  Enlace que permite volver desde la inscripción
+  pública hasta la página de inicio de sesión.
+*/
+.volver-login {
+  display: block;
+  margin-top: 24px;
+  color: #0b5f89;
+  text-align: center;
+  text-decoration: none;
+}
+
+.volver-login:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   14. DISEÑO RESPONSIVE DEL LOGIN
+   ========================================================= */
+
+/*
+  Cuando la pantalla tiene 850 píxeles o menos,
+  desaparece la columna informativa y queda
+  solamente el formulario del login.
+*/
 @media (max-width: 850px) {
   .login-page {
     grid-template-columns: 1fr;
@@ -209,107 +837,490 @@
   .login-card {
     padding: 32px 24px;
   }
-  
-
-    /* panel de Administración */
-    .loading {
-  margin-top: 50px;
-  text-align: center;
 }
 
-.panel {
-  min-height: 100vh;
-  background: #f4f7fb;
+
+/* =========================================================
+   15. DISEÑO RESPONSIVE DEL PANEL Y LA INSCRIPCIÓN
+   ========================================================= */
+
+/*
+  Ajustes para teléfonos y pantallas pequeñas.
+*/
+@media (max-width: 600px) {
+  .panel-header,
+  .panel-nav,
+  .panel-content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .panel-header {
+    align-items: flex-start;
+  }
+
+  .panel-header h1 {
+    font-size: 19px;
+  }
+
+  .panel-nav button {
+    margin-bottom: 5px;
+  }
+
+  .inscripcion-page {
+    padding: 18px 12px;
+  }
+
+  .inscripcion-card {
+    padding: 28px 20px;
+  }
+
+  .inscripcion-card h2 {
+    font-size: 1.55rem;
+  }
+
+  .contenedor-qr canvas {
+    width: 100%;
+    max-width: 220px;
+  }
 }
 
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  color: white;
-  background: #0b5f89;
-}
+/* =========================================================
+   16. PANEL DEL RECEPCIONISTA
+   ========================================================= */
 
-.panel-header h1 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.panel-header button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.panel-content {
-  padding: 30px;
-}
-
-.panel-nav {
-  padding: 10px 30px;
-  background: white;
-  border-bottom: 1px solid #cccccc;
-}
-
-.panel-nav button {
-  margin-right: 10px;
-  padding: 8px 15px;
-  border: 1px solid #0b5f89;
-  border-radius: 4px;
-  color: #0b5f89;
-  background: white;
-  cursor: pointer;
-}
-
-.form-evento {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.form-evento input,
-.form-evento select {
-  padding: 9px;
-  border: 1px solid #aaaaaa;
-  border-radius: 4px;
-}
-
-.form-evento button {
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  background: #0b5f89;
-  cursor: pointer;
-}
-
-.mensaje-evento {
-  padding: 10px;
-  background: #e7f5eb;
-}
-
-.tabla-contenedor {
-  overflow-x: auto;
-}
-
-.tabla-eventos {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-}
-
-.tabla-eventos th,
-.tabla-eventos td {
-  padding: 10px;
-  border: 1px solid #cccccc;
+/*
+  Corrige cualquier alineación centrada heredada
+  de los estilos iniciales de Vite.
+*/
+.panel-recepcionista .panel-content {
   text-align: left;
 }
 
+.panel-recepcionista .panel-nav {
+  text-align: left;
+}
 
+/*
+  Texto que identifica el panel debajo de EventControl.
+*/
+.panel-tipo {
+  margin: 3px 0 0;
+  color: #d5eaf4;
+  font-size: 0.85rem;
+}
 
+/*
+  Botón correspondiente a la sección seleccionada.
+*/
+.panel-nav button.activo {
+  color: #ffffff;
+  background: #0b5f89;
+}
+
+/*
+  Distribuye las opciones del recepcionista
+  en dos columnas.
+*/
+.resumen-recepcion {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 28px;
+}
+
+/*
+  Diseño de cada tarjeta del panel.
+*/
+.tarjeta-recepcion {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 130px;
+  padding: 22px;
+  border: 1px solid #dce6ec;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(9, 47, 75, 0.08);
+}
+
+.tarjeta-recepcion h3 {
+  margin: 0 0 8px;
+  color: #12344d;
+}
+
+.tarjeta-recepcion p {
+  margin: 0;
+  color: #657683;
+  line-height: 1.5;
+}
+
+/*
+  Cuadro azul que muestra las letras QR o ID.
+*/
+.tarjeta-icono {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #0b5f89;
+  font-weight: 800;
+}
+
+/*
+  Contenedor temporal del futuro lector QR.
+*/
+.modulo-pendiente {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 25px;
+  padding: 35px;
+  border: 2px dashed #9fb9c8;
+  border-radius: 14px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.modulo-pendiente-icono {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  color: #ffffff;
+  background: #0b5f89;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.modulo-pendiente h3 {
+  margin: 0 0 8px;
+  color: #12344d;
+}
+
+.modulo-pendiente p {
+  margin: 0;
+  color: #657683;
+}
+
+/*
+  En teléfonos, las tarjetas pasan de dos columnas
+  a una sola columna.
+*/
+@media (max-width: 700px) {
+  .resumen-recepcion {
+    grid-template-columns: 1fr;
+  }
+
+  .tarjeta-recepcion {
+    align-items: flex-start;
+  }
+
+  .modulo-pendiente {
+    padding: 25px 18px;
+  }
+}
+/* =====================================================
+   CONTROL DE ACCESO
+   ===================================================== */
+
+.control-acceso {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.control-descripcion {
+  margin-bottom: 25px;
+  color: #657683;
+}
+
+/* Distribución del lector y búsqueda manual */
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.control-tarjeta {
+  padding: 24px;
+  border: 1px solid #dce5eb;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(9, 47, 75, 0.08);
+}
+
+.control-tarjeta h3 {
+  margin-top: 0;
+  color: #102a3d;
+}
+
+.control-tarjeta p {
+  color: #657683;
+  line-height: 1.5;
+}
+
+/* Espacio donde html5-qrcode muestra la cámara */
+
+.lector-codigo-qr {
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.lector-codigo-qr video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Formulario de búsqueda manual */
+
+.form-busqueda-manual {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-busqueda-manual label,
+.seleccion-jornada label {
+  color: #263d4c;
+  font-weight: 700;
+}
+
+.form-busqueda-manual input,
+.seleccion-jornada select {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #cad6de;
+  border-radius: 7px;
+  box-sizing: border-box;
+  background: #ffffff;
+  font: inherit;
+}
+
+.form-busqueda-manual input:focus,
+.seleccion-jornada select:focus {
+  border-color: #178fc0;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(23, 143, 192, 0.12);
+}
+
+/* Botones */
+
+.boton-principal,
+.boton-secundario,
+.boton-registrar-ingreso,
+.boton-nueva-lectura {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 7px;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton-principal {
+  background: #0b5f89;
+}
+
+.boton-principal:hover {
+  background: #084b6e;
+}
+
+.boton-secundario {
+  background: #687780;
+}
+
+.boton-registrar-ingreso {
+  margin-top: 15px;
+  background: #17623c;
+}
+
+.boton-registrar-ingreso:hover {
+  background: #104d2e;
+}
+
+.boton-nueva-lectura {
+  margin-top: 20px;
+  color: #0b5f89;
+  border: 1px solid #0b5f89;
+  background: #ffffff;
+}
+
+.boton-nueva-lectura:hover {
+  background: #edf7fb;
+}
+
+.boton-principal:disabled,
+.boton-registrar-ingreso:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Mensajes del sistema */
+
+.mensaje-control {
+  margin: 22px 0;
+  padding: 13px 15px;
+  border-radius: 7px;
+}
+
+.mensaje-control.exito {
+  color: #17623c;
+  background: #e7f7ed;
+}
+
+.mensaje-control.error {
+  color: #9d2929;
+  background: #fdecec;
+}
+
+.mensaje-control.advertencia {
+  color: #785800;
+  background: #fff5ce;
+}
+
+/* Resultado de la inscripción */
+
+.resultado-inscripcion {
+  margin-top: 25px;
+  padding: 26px;
+  border: 1px solid #b9dfc7;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(9, 47, 75, 0.08);
+}
+
+.resultado-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e1e8ec;
+}
+
+.resultado-encabezado h3 {
+  margin: 4px 0 0;
+  color: #102a3d;
+  font-size: 1.5rem;
+}
+
+.resultado-etiqueta {
+  margin: 0;
+  color: #657683;
+  font-size: 0.85rem;
+}
+
+.estado-confirmado {
+  padding: 7px 12px;
+  border-radius: 20px;
+  color: #17623c;
+  background: #e7f7ed;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.datos-inscripcion {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 25px;
+  margin: 20px 0;
+}
+
+.datos-inscripcion p {
+  overflow-wrap: anywhere;
+}
+
+.seleccion-jornada {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 520px;
+  padding-top: 15px;
+}
+
+/* Adaptación para teléfonos y tabletas pequeñas */
+
+@media (max-width: 750px) {
+  .control-grid,
+  .datos-inscripcion {
+    grid-template-columns: 1fr;
+  }
+
+  .control-tarjeta,
+  .resultado-inscripcion {
+    padding: 20px;
+  }
+
+  .resultado-encabezado {
+    flex-direction: column;
+  }
+}
+
+/* Mensaje especial cuando el ingreso ya existe */
+
+.mensaje-control.duplicado {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 750px;
+  padding: 18px 20px;
+  border: 2px solid #d52222;
+  border-left: 8px solid #d52222;
+  border-radius: 10px;
+  color: #9d1919;
+  background: #fff0f0;
+  box-shadow: 0 8px 22px rgba(181, 28, 28, 0.16);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* Círculo rojo con signo de advertencia */
+
+.mensaje-control-icono {
+  display: grid;
+  flex: 0 0 38px;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #d52222;
+  font-size: 1.45rem;
+  font-weight: 900;
+}
+
+/* =====================================================
+   CONTROL DE ALMUERZO
+   ===================================================== */
+
+.boton-entregar-almuerzo {
+  margin-top: 15px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 7px;
+  color: #ffffff;
+  background: #d07812;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.boton-entregar-almuerzo:hover {
+  background: #aa5e08;
+}
+
+.boton-entregar-almuerzo:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
