@@ -15,6 +15,9 @@ dist-ssr
 .env.*
 !.env.example
 
+# Firebase service account credentials
+bd/exportador-firestore/clave-servicio.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

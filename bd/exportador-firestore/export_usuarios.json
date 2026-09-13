@@ -1,0 +1,22 @@
+{
+  "47q6FWHwrBS6RSJyuGObnpIXYPf2": {
+    "fechaCreacion": {
+      "_seconds": 1788662824,
+      "_nanoseconds": 0
+    },
+    "activo": true,
+    "correo": "recepcionista@eventcontrol.cl",
+    "nombreCompleto": "Recepcionista de Prueba",
+    "rol": "recepcionista"
+  },
+  "cBRwgtBIEDfbsFLoSuvKxNMmLVe2": {
+    "nombreCompleto": "Juan Aravena Gallardo",
+    "correo": "juan.aravena@adventistas.org",
+    "rol": "administrador",
+    "activo": true,
+    "fechaCreacion": {
+      "_seconds": 1787081457,
+      "_nanoseconds": 0
+    }
+  }
+}
