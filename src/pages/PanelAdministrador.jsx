@@ -4,6 +4,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../services/firebase";
 import GestionEventos from "./GestionEventos";
 import GestionJornadas from "./GestionJornadas";
+import GestionSolicitudes from "./GestionSolicitudes";
 
 function PanelAdministrador({ perfil }) {
   const [vista, setVista] = useState("inicio");
@@ -31,6 +32,13 @@ function PanelAdministrador({ perfil }) {
         <button onClick={() => setVista("jornadas")}>
           Jornadas
         </button>
+        <button
+        className={vista === "solicitudes" ? "activo" : ""}
+        type="button"
+        onClick={() => setVista("solicitudes")}
+        >
+         Solicitudes de palabra
+        </button>
       </nav>
 
       <main className="panel-content">
@@ -43,7 +51,7 @@ function PanelAdministrador({ perfil }) {
         )}
 
         {vista === "eventos" && <GestionEventos />}
-
+        {vista === "solicitudes" && <GestionSolicitudes />}
         {vista === "jornadas" && <GestionJornadas />}
       </main>
     </div>

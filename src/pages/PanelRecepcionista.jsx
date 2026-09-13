@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signOut } from "firebase/auth";
 import ControlAcceso from "./ControlAcceso";
 import ControlAlmuerzo from "./ControlAlmuerzo";
+import RegistrarSolicitud from "./RegistrarSolicitud";
 import { auth } from "../services/firebase";
 
 
@@ -18,6 +19,7 @@ function PanelRecepcionista({ perfil }) {
 
   return (
     <div className="panel panel-recepcionista">
+      
       <header className="panel-header">
         <div>
           <h1>EventControl</h1>
@@ -37,7 +39,13 @@ function PanelRecepcionista({ perfil }) {
         >
           Inicio
         </button>
-
+        <button
+           className={vista === "solicitud" ? "activo" : ""}
+           type="button"
+           onClick={() => setVista("solicitud")}
+             >
+           Solicitud de palabra
+        </button>
         <button
           className={vista === "controlAcceso" ? "activo" : ""}
           type="button"
@@ -46,17 +54,20 @@ function PanelRecepcionista({ perfil }) {
           Control de acceso
         </button>
          <button
-  className={vista === "almuerzo" ? "activo" : ""}
-  type="button"
-  onClick={() => setVista("almuerzo")}
->
-  Control de almuerzo
-</button>
+
+   
+           className={vista === "almuerzo" ? "activo" : ""}
+           type="button"
+           onClick={() => setVista("almuerzo")}
+           >
+            Control de almuerzo
+        </button>
       </nav>
 
      
 
       <main className="panel-content">
+        {vista === "solicitud" && <RegistrarSolicitud />}
         {vista === "almuerzo" && <ControlAlmuerzo />}
         {vista === "inicio" && (
           <section>
