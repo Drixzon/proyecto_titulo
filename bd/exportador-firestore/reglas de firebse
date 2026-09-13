@@ -1,0 +1,243 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* Comprueba que el usuario sea un administrador activo */
+    function esAdministrador() {
+      return request.auth != null
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.rol == "administrador"
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.activo == true;
+    }
+
+    /* Comprueba que el usuario sea un recepcionista activo */
+    function esRecepcionista() {
+      return request.auth != null
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.rol == "recepcionista"
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.activo == true;
+    }
+
+    /* Comprueba que sea personal autorizado */
+    function esPersonalActivo() {
+      return esAdministrador() || esRecepcionista();
+    }
+
+    /*
+     * Valida una inscripción realizada desde
+     * la página pública.
+     */
+    function inscripcionPublicaValida() {
+      return request.resource.data.keys().hasOnly([
+          "eventoId",
+          "tipoDocumento",
+          "numeroDocumento",
+          "nombreCompleto",
+          "correo",
+          "telefono",
+          "codigoQR",
+          "estado",
+          "fechaInscripcion"
+        ])
+
+        /* Validación del evento */
+        && request.resource.data.eventoId is string
+        && request.resource.data.eventoId.size() > 0
+
+        /* Validación del tipo de documento */
+        && request.resource.data.tipoDocumento
+          in ["rut", "pasaporte"]
+
+        /* Validación del número de documento */
+        && request.resource.data.numeroDocumento is string
+
+        && (
+          (
+            request.resource.data.tipoDocumento == "rut"
+            && request.resource.data.numeroDocumento.size() >= 8
+            && request.resource.data.numeroDocumento.size() <= 9
+          )
+          ||
+          (
+            request.resource.data.tipoDocumento == "pasaporte"
+            && request.resource.data.numeroDocumento.size() >= 5
+            && request.resource.data.numeroDocumento.size() <= 20
+          )
+        )
+
+        /* Validación de los datos personales */
+        && request.resource.data.nombreCompleto is string
+        && request.resource.data.nombreCompleto.size() >= 3
+
+        && request.resource.data.correo is string
+        && request.resource.data.correo.size() >= 5
+
+       && request.resource.data.telefono is string
+       && request.resource.data.telefono.matches('^[+]56 9 [0-9]{4} [0-9]{4}$')
+
+        /* Validación del código y estado */
+        && request.resource.data.codigoQR is string
+        && request.resource.data.codigoQR.size() > 0
+        && request.resource.data.estado == "confirmada"
+
+        /* La fecha debe ser generada por Firebase */
+        && request.resource.data.fechaInscripcion == request.time
+
+        /* El evento seleccionado debe estar activo */
+        && get(
+          /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+        ).data.estado == "activo";
+    }
+
+    /* Valida una asistencia registrada por el personal */
+    function asistenciaValida() {
+      return request.resource.data.keys().hasOnly([
+          "inscripcionId",
+          "jornadaId",
+          "registradoPor",
+          "fechaHoraIngreso",
+          "metodo",
+          "estado"
+        ])
+        && request.resource.data.inscripcionId is string
+        && request.resource.data.jornadaId is string
+        && request.resource.data.registradoPor == request.auth.uid
+        && request.resource.data.fechaHoraIngreso == request.time
+        && request.resource.data.metodo in ["qr", "manual"]
+        && request.resource.data.estado == "ingresado"
+
+        && exists(
+          /databases/$(database)/documents/jornadas/$(request.resource.data.jornadaId)
+        )
+
+        && get(
+          /databases/$(database)/documents/inscripciones/$(request.resource.data.inscripcionId)
+        ).data.estado == "confirmada";
+    }
+
+    /*
+     * Valida una entrega de almuerzo.
+     * La persona debe tener asistencia registrada
+     * y la jornada debe tener almuerzo habilitado.
+     */
+    function entregaAlmuerzoValida() {
+      return request.resource.data.keys().hasOnly([
+          "inscripcionId",
+          "jornadaId",
+          "asistenciaId",
+          "entregadoPor",
+          "fechaHoraEntrega",
+          "estado"
+        ])
+        && request.resource.data.inscripcionId is string
+        && request.resource.data.jornadaId is string
+        && request.resource.data.asistenciaId is string
+        && request.resource.data.entregadoPor == request.auth.uid
+        && request.resource.data.fechaHoraEntrega == request.time
+        && request.resource.data.estado == "entregado"
+
+        /* Comprueba que la jornada incluya almuerzo */
+        && get(
+          /databases/$(database)/documents/jornadas/$(request.resource.data.jornadaId)
+        ).data.almuerzoHabilitado == true
+
+        /* Comprueba que la asistencia corresponda al inscrito */
+        && get(
+          /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
+        ).data.inscripcionId
+          == request.resource.data.inscripcionId
+
+        /* Comprueba que la asistencia corresponda a la jornada */
+        && get(
+          /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
+        ).data.jornadaId
+          == request.resource.data.jornadaId
+
+        /* Comprueba que la persona haya ingresado */
+        && get(
+          /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
+        ).data.estado == "ingresado";
+    }
+
+    /* Perfiles de usuarios */
+    match /usuarios/{usuarioId} {
+      allow read: if request.auth != null
+                  && request.auth.uid == usuarioId;
+
+      allow write: if false;
+    }
+
+    /* Eventos */
+    match /eventos/{eventoId} {
+      allow read: if esPersonalActivo()
+                  || resource.data.estado == "activo";
+
+      allow create, update, delete: if esAdministrador();
+    }
+
+    /* Jornadas */
+    match /jornadas/{jornadaId} {
+      allow read: if esPersonalActivo();
+      allow create, update, delete: if esAdministrador();
+    }
+
+    /* Inscripciones */
+    match /inscripciones/{inscripcionId} {
+
+      /*
+       * Permite consultar solamente un documento individual.
+       * Esto es necesario para comprobar si la inscripción existe.
+       */
+      allow get: if true;
+
+      /*
+       * Solamente el personal puede consultar
+       * el listado completo de inscripciones.
+       */
+      allow list: if esPersonalActivo();
+
+      /*
+       * Permite una inscripción pública únicamente
+       * cuando todos sus datos sean válidos.
+       */
+      allow create: if esAdministrador()
+                    || inscripcionPublicaValida();
+
+      /* Solamente el administrador puede modificar o eliminar */
+      allow update, delete: if esAdministrador();
+    }
+
+    /* Asistencias */
+    match /asistencias/{asistenciaId} {
+      allow read: if esPersonalActivo();
+
+      allow create: if esPersonalActivo()
+                    && asistenciaValida();
+
+      allow update, delete: if esAdministrador();
+    }
+
+    /* Solicitudes de palabra */
+    match /solicitudesPalabra/{solicitudId} {
+      allow read, create: if esPersonalActivo();
+      allow update, delete: if esAdministrador();
+    }
+
+    /* Entregas de almuerzo */
+    match /entregasAlmuerzo/{entregaId} {
+      allow read: if esPersonalActivo();
+
+      allow create: if esPersonalActivo()
+                    && entregaAlmuerzoValida();
+
+      allow update, delete: if esAdministrador();
+    }
+  }
+}
