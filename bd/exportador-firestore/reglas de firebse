@@ -25,15 +25,37 @@ service cloud.firestore {
         ).data.activo == true;
     }
 
-    /* Comprueba que sea personal autorizado */
+    /* Personal autorizado */
     function esPersonalActivo() {
       return esAdministrador() || esRecepcionista();
     }
 
     /*
-     * Valida una inscripción realizada desde
-     * la página pública.
+     * Permite aumentar el contador público
+     * solamente en una unidad.
      */
+    function actualizacionCupoPublicaValida() {
+      return resource.data.estado == "activo"
+
+        /* Solamente se puede cambiar inscritosActuales */
+        && request.resource.data
+          .diff(resource.data)
+          .affectedKeys()
+          .hasOnly(["inscritosActuales"])
+
+        /* El contador debe ser un número entero */
+        && request.resource.data.inscritosActuales is int
+
+        /* Solamente puede aumentar en una unidad */
+        && request.resource.data.inscritosActuales
+          == resource.data.get("inscritosActuales", 0) + 1
+
+        /* Nunca puede superar la capacidad */
+        && request.resource.data.inscritosActuales
+          <= resource.data.capacidad;
+    }
+
+    /* Valida una inscripción pública */
     function inscripcionPublicaValida() {
       return request.resource.data.keys().hasOnly([
           "eventoId",
@@ -47,15 +69,15 @@ service cloud.firestore {
           "fechaInscripcion"
         ])
 
-        /* Validación del evento */
+        /* Evento */
         && request.resource.data.eventoId is string
         && request.resource.data.eventoId.size() > 0
 
-        /* Validación del tipo de documento */
+        /* Tipo de documento */
         && request.resource.data.tipoDocumento
           in ["rut", "pasaporte"]
 
-        /* Validación del número de documento */
+        /* Número de documento */
         && request.resource.data.numeroDocumento is string
 
         && (
@@ -72,31 +94,54 @@ service cloud.firestore {
           )
         )
 
-        /* Validación de los datos personales */
+        /* Nombre */
         && request.resource.data.nombreCompleto is string
         && request.resource.data.nombreCompleto.size() >= 3
 
+        /* Correo */
         && request.resource.data.correo is string
         && request.resource.data.correo.size() >= 5
 
-       && request.resource.data.telefono is string
-       && request.resource.data.telefono.matches('^[+]56 9 [0-9]{4} [0-9]{4}$')
+        /* Teléfono móvil chileno */
+        && request.resource.data.telefono is string
+        && request.resource.data.telefono.matches(
+          '^[+]56 9 [0-9]{4} [0-9]{4}$'
+        )
 
-        /* Validación del código y estado */
+        /* Código y estado */
         && request.resource.data.codigoQR is string
         && request.resource.data.codigoQR.size() > 0
         && request.resource.data.estado == "confirmada"
 
-        /* La fecha debe ser generada por Firebase */
+        /* Fecha generada por Firebase */
         && request.resource.data.fechaInscripcion == request.time
 
-        /* El evento seleccionado debe estar activo */
+        /* El evento debe estar activo */
         && get(
           /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
-        ).data.estado == "activo";
+        ).data.estado == "activo"
+
+        /*
+         * La inscripción debe aumentar el contador
+         * del evento dentro de la misma transacción.
+         */
+        && getAfter(
+          /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+        ).data.inscritosActuales
+          == get(
+            /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+          ).data.get("inscritosActuales", 0) + 1
+
+        /* El nuevo contador no puede superar la capacidad */
+        && getAfter(
+          /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+        ).data.inscritosActuales
+          <= get(
+            /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+          ).data.capacidad;
     }
 
-    /* Valida una asistencia registrada por el personal */
+    /* Valida una asistencia */
     function asistenciaValida() {
       return request.resource.data.keys().hasOnly([
           "inscripcionId",
@@ -122,11 +167,7 @@ service cloud.firestore {
         ).data.estado == "confirmada";
     }
 
-    /*
-     * Valida una entrega de almuerzo.
-     * La persona debe tener asistencia registrada
-     * y la jornada debe tener almuerzo habilitado.
-     */
+    /* Valida una entrega de almuerzo */
     function entregaAlmuerzoValida() {
       return request.resource.data.keys().hasOnly([
           "inscripcionId",
@@ -143,24 +184,24 @@ service cloud.firestore {
         && request.resource.data.fechaHoraEntrega == request.time
         && request.resource.data.estado == "entregado"
 
-        /* Comprueba que la jornada incluya almuerzo */
+        /* La jornada debe incluir almuerzo */
         && get(
           /databases/$(database)/documents/jornadas/$(request.resource.data.jornadaId)
         ).data.almuerzoHabilitado == true
 
-        /* Comprueba que la asistencia corresponda al inscrito */
+        /* La asistencia debe pertenecer al inscrito */
         && get(
           /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
         ).data.inscripcionId
           == request.resource.data.inscripcionId
 
-        /* Comprueba que la asistencia corresponda a la jornada */
+        /* La asistencia debe pertenecer a la jornada */
         && get(
           /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
         ).data.jornadaId
           == request.resource.data.jornadaId
 
-        /* Comprueba que la persona haya ingresado */
+        /* La persona debe haber ingresado */
         && get(
           /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
         ).data.estado == "ingresado";
@@ -179,7 +220,15 @@ service cloud.firestore {
       allow read: if esPersonalActivo()
                   || resource.data.estado == "activo";
 
-      allow create, update, delete: if esAdministrador();
+      allow create, delete: if esAdministrador();
+
+      /*
+       * El administrador puede modificar todo.
+       * La página pública solamente puede aumentar
+       * el contador de inscritos en una unidad.
+       */
+      allow update: if esAdministrador()
+                    || actualizacionCupoPublicaValida();
     }
 
     /* Jornadas */
@@ -190,27 +239,20 @@ service cloud.firestore {
 
     /* Inscripciones */
     match /inscripciones/{inscripcionId} {
-
       /*
-       * Permite consultar solamente un documento individual.
-       * Esto es necesario para comprobar si la inscripción existe.
+       * La página pública puede consultar únicamente
+       * un documento individual para detectar duplicados.
        */
       allow get: if true;
 
-      /*
-       * Solamente el personal puede consultar
-       * el listado completo de inscripciones.
-       */
+      /* Solamente el personal puede listar inscripciones */
       allow list: if esPersonalActivo();
 
-      /*
-       * Permite una inscripción pública únicamente
-       * cuando todos sus datos sean válidos.
-       */
+      /* Creación pública validada */
       allow create: if esAdministrador()
                     || inscripcionPublicaValida();
 
-      /* Solamente el administrador puede modificar o eliminar */
+      /* Solamente el administrador puede modificar */
       allow update, delete: if esAdministrador();
     }
 
