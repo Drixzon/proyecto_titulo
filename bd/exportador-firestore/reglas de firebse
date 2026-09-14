@@ -1,0 +1,285 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* Comprueba que el usuario sea un administrador activo */
+    function esAdministrador() {
+      return request.auth != null
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.rol == "administrador"
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.activo == true;
+    }
+
+    /* Comprueba que el usuario sea un recepcionista activo */
+    function esRecepcionista() {
+      return request.auth != null
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.rol == "recepcionista"
+        && get(
+          /databases/$(database)/documents/usuarios/$(request.auth.uid)
+        ).data.activo == true;
+    }
+
+    /* Personal autorizado */
+    function esPersonalActivo() {
+      return esAdministrador() || esRecepcionista();
+    }
+
+    /*
+     * Permite aumentar el contador público
+     * solamente en una unidad.
+     */
+    function actualizacionCupoPublicaValida() {
+      return resource.data.estado == "activo"
+
+        /* Solamente se puede cambiar inscritosActuales */
+        && request.resource.data
+          .diff(resource.data)
+          .affectedKeys()
+          .hasOnly(["inscritosActuales"])
+
+        /* El contador debe ser un número entero */
+        && request.resource.data.inscritosActuales is int
+
+        /* Solamente puede aumentar en una unidad */
+        && request.resource.data.inscritosActuales
+          == resource.data.get("inscritosActuales", 0) + 1
+
+        /* Nunca puede superar la capacidad */
+        && request.resource.data.inscritosActuales
+          <= resource.data.capacidad;
+    }
+
+    /* Valida una inscripción pública */
+    function inscripcionPublicaValida() {
+      return request.resource.data.keys().hasOnly([
+          "eventoId",
+          "tipoDocumento",
+          "numeroDocumento",
+          "nombreCompleto",
+          "correo",
+          "telefono",
+          "codigoQR",
+          "estado",
+          "fechaInscripcion"
+        ])
+
+        /* Evento */
+        && request.resource.data.eventoId is string
+        && request.resource.data.eventoId.size() > 0
+
+        /* Tipo de documento */
+        && request.resource.data.tipoDocumento
+          in ["rut", "pasaporte"]
+
+        /* Número de documento */
+        && request.resource.data.numeroDocumento is string
+
+        && (
+          (
+            request.resource.data.tipoDocumento == "rut"
+            && request.resource.data.numeroDocumento.size() >= 8
+            && request.resource.data.numeroDocumento.size() <= 9
+          )
+          ||
+          (
+            request.resource.data.tipoDocumento == "pasaporte"
+            && request.resource.data.numeroDocumento.size() >= 5
+            && request.resource.data.numeroDocumento.size() <= 20
+          )
+        )
+
+        /* Nombre */
+        && request.resource.data.nombreCompleto is string
+        && request.resource.data.nombreCompleto.size() >= 3
+
+        /* Correo */
+        && request.resource.data.correo is string
+        && request.resource.data.correo.size() >= 5
+
+        /* Teléfono móvil chileno */
+        && request.resource.data.telefono is string
+        && request.resource.data.telefono.matches(
+          '^[+]56 9 [0-9]{4} [0-9]{4}$'
+        )
+
+        /* Código y estado */
+        && request.resource.data.codigoQR is string
+        && request.resource.data.codigoQR.size() > 0
+        && request.resource.data.estado == "confirmada"
+
+        /* Fecha generada por Firebase */
+        && request.resource.data.fechaInscripcion == request.time
+
+        /* El evento debe estar activo */
+        && get(
+          /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+        ).data.estado == "activo"
+
+        /*
+         * La inscripción debe aumentar el contador
+         * del evento dentro de la misma transacción.
+         */
+        && getAfter(
+          /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+        ).data.inscritosActuales
+          == get(
+            /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+          ).data.get("inscritosActuales", 0) + 1
+
+        /* El nuevo contador no puede superar la capacidad */
+        && getAfter(
+          /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+        ).data.inscritosActuales
+          <= get(
+            /databases/$(database)/documents/eventos/$(request.resource.data.eventoId)
+          ).data.capacidad;
+    }
+
+    /* Valida una asistencia */
+    function asistenciaValida() {
+      return request.resource.data.keys().hasOnly([
+          "inscripcionId",
+          "jornadaId",
+          "registradoPor",
+          "fechaHoraIngreso",
+          "metodo",
+          "estado"
+        ])
+        && request.resource.data.inscripcionId is string
+        && request.resource.data.jornadaId is string
+        && request.resource.data.registradoPor == request.auth.uid
+        && request.resource.data.fechaHoraIngreso == request.time
+        && request.resource.data.metodo in ["qr", "manual"]
+        && request.resource.data.estado == "ingresado"
+
+        && exists(
+          /databases/$(database)/documents/jornadas/$(request.resource.data.jornadaId)
+        )
+
+        && get(
+          /databases/$(database)/documents/inscripciones/$(request.resource.data.inscripcionId)
+        ).data.estado == "confirmada";
+    }
+
+    /* Valida una entrega de almuerzo */
+    function entregaAlmuerzoValida() {
+      return request.resource.data.keys().hasOnly([
+          "inscripcionId",
+          "jornadaId",
+          "asistenciaId",
+          "entregadoPor",
+          "fechaHoraEntrega",
+          "estado"
+        ])
+        && request.resource.data.inscripcionId is string
+        && request.resource.data.jornadaId is string
+        && request.resource.data.asistenciaId is string
+        && request.resource.data.entregadoPor == request.auth.uid
+        && request.resource.data.fechaHoraEntrega == request.time
+        && request.resource.data.estado == "entregado"
+
+        /* La jornada debe incluir almuerzo */
+        && get(
+          /databases/$(database)/documents/jornadas/$(request.resource.data.jornadaId)
+        ).data.almuerzoHabilitado == true
+
+        /* La asistencia debe pertenecer al inscrito */
+        && get(
+          /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
+        ).data.inscripcionId
+          == request.resource.data.inscripcionId
+
+        /* La asistencia debe pertenecer a la jornada */
+        && get(
+          /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
+        ).data.jornadaId
+          == request.resource.data.jornadaId
+
+        /* La persona debe haber ingresado */
+        && get(
+          /databases/$(database)/documents/asistencias/$(request.resource.data.asistenciaId)
+        ).data.estado == "ingresado";
+    }
+
+    /* Perfiles de usuarios */
+    match /usuarios/{usuarioId} {
+      allow read: if request.auth != null
+                  && request.auth.uid == usuarioId;
+
+      allow write: if false;
+    }
+
+    /* Eventos */
+    match /eventos/{eventoId} {
+      allow read: if esPersonalActivo()
+                  || resource.data.estado == "activo";
+
+      allow create, delete: if esAdministrador();
+
+      /*
+       * El administrador puede modificar todo.
+       * La página pública solamente puede aumentar
+       * el contador de inscritos en una unidad.
+       */
+      allow update: if esAdministrador()
+                    || actualizacionCupoPublicaValida();
+    }
+
+    /* Jornadas */
+    match /jornadas/{jornadaId} {
+      allow read: if esPersonalActivo();
+      allow create, update, delete: if esAdministrador();
+    }
+
+    /* Inscripciones */
+    match /inscripciones/{inscripcionId} {
+      /*
+       * La página pública puede consultar únicamente
+       * un documento individual para detectar duplicados.
+       */
+      allow get: if true;
+
+      /* Solamente el personal puede listar inscripciones */
+      allow list: if esPersonalActivo();
+
+      /* Creación pública validada */
+      allow create: if esAdministrador()
+                    || inscripcionPublicaValida();
+
+      /* Solamente el administrador puede modificar */
+      allow update, delete: if esAdministrador();
+    }
+
+    /* Asistencias */
+    match /asistencias/{asistenciaId} {
+      allow read: if esPersonalActivo();
+
+      allow create: if esPersonalActivo()
+                    && asistenciaValida();
+
+      allow update, delete: if esAdministrador();
+    }
+
+    /* Solicitudes de palabra */
+    match /solicitudesPalabra/{solicitudId} {
+      allow read, create: if esPersonalActivo();
+      allow update, delete: if esAdministrador();
+    }
+
+    /* Entregas de almuerzo */
+    match /entregasAlmuerzo/{entregaId} {
+      allow read: if esPersonalActivo();
+
+      allow create: if esPersonalActivo()
+                    && entregaAlmuerzoValida();
+
+      allow update, delete: if esAdministrador();
+    }
+  }
+}
