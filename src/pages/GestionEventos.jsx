@@ -12,6 +12,7 @@ import {
 
 import { auth, db } from "../services/firebase";
 
+/* Valores iniciales del formulario */
 const formularioInicial = {
   nombre: "",
   descripcion: "",
@@ -23,12 +24,17 @@ const formularioInicial = {
 };
 
 function GestionEventos() {
-  const [formulario, setFormulario] = useState(formularioInicial);
+  const [formulario, setFormulario] =
+    useState(formularioInicial);
+
   const [eventos, setEventos] = useState([]);
-  const [eventoEditandoId, setEventoEditandoId] = useState(null);
+  const [eventoEditandoId, setEventoEditandoId] =
+    useState(null);
+
   const [mensaje, setMensaje] = useState("");
   const [guardando, setGuardando] = useState(false);
 
+  /* Carga todos los eventos registrados */
   const cargarEventos = async () => {
     try {
       const consulta = query(
@@ -38,15 +44,30 @@ function GestionEventos() {
 
       const resultado = await getDocs(consulta);
 
-      const listaEventos = resultado.docs.map((documento) => ({
-        id: documento.id,
-        ...documento.data(),
-      }));
+      const listaEventos = resultado.docs.map(
+        (documento) => ({
+          id: documento.id,
+          ...documento.data(),
+
+          /*
+           * Los eventos antiguos que no tengan contador
+           * se consideran inicialmente con cero inscritos.
+           */
+          inscritosActuales:
+            documento.data().inscritosActuales || 0,
+        })
+      );
 
       setEventos(listaEventos);
     } catch (error) {
-      console.error("Error al cargar los eventos:", error);
-      setMensaje("No fue posible cargar los eventos.");
+      console.error(
+        "Error al cargar los eventos:",
+        error
+      );
+
+      setMensaje(
+        "No fue posible cargar los eventos."
+      );
     }
   };
 
@@ -54,43 +75,97 @@ function GestionEventos() {
     cargarEventos();
   }, []);
 
+  /* Actualiza los campos del formulario */
   const actualizarCampo = (evento) => {
     const { name, value } = evento.target;
 
-    setFormulario({
-      ...formulario,
+    setFormulario((formularioActual) => ({
+      ...formularioActual,
       [name]: value,
-    });
+    }));
   };
 
+  /* Obtiene el evento que está siendo editado */
+  const obtenerEventoEditando = () => {
+    return eventos.find(
+      (evento) => evento.id === eventoEditandoId
+    );
+  };
+
+  /* Valida los datos ingresados */
   const validarFormulario = () => {
     if (
-      !formulario.nombre ||
-      !formulario.descripcion ||
-      !formulario.ubicacion ||
+      !formulario.nombre.trim() ||
+      !formulario.descripcion.trim() ||
+      !formulario.ubicacion.trim() ||
       !formulario.capacidad ||
       !formulario.fechaInicio ||
       !formulario.fechaTermino
     ) {
-      setMensaje("Debes completar todos los campos.");
+      setMensaje(
+        "Debes completar todos los campos."
+      );
+
       return false;
     }
 
-    if (Number(formulario.capacidad) <= 0) {
-      setMensaje("La capacidad debe ser mayor que cero.");
+    const capacidadIngresada = Number(
+      formulario.capacidad
+    );
+
+    if (
+      !Number.isInteger(capacidadIngresada) ||
+      capacidadIngresada <= 0
+    ) {
+      setMensaje(
+        "La capacidad debe ser un número entero mayor que cero."
+      );
+
       return false;
     }
 
-    if (formulario.fechaTermino < formulario.fechaInicio) {
-      setMensaje("La fecha final no puede ser anterior a la fecha inicial.");
+    if (
+      formulario.fechaTermino <
+      formulario.fechaInicio
+    ) {
+      setMensaje(
+        "La fecha final no puede ser anterior a la fecha inicial."
+      );
+
       return false;
+    }
+
+    /*
+     * Si se edita un evento, no permite establecer
+     * una capacidad inferior a sus inscritos actuales.
+     */
+    if (eventoEditandoId) {
+      const eventoEditando =
+        obtenerEventoEditando();
+
+      const inscritosActuales = Number(
+        eventoEditando?.inscritosActuales || 0
+      );
+
+      if (
+        capacidadIngresada < inscritosActuales
+      ) {
+        setMensaje(
+          `La capacidad no puede ser inferior a los ${inscritosActuales} inscritos actuales.`
+        );
+
+        return false;
+      }
     }
 
     return true;
   };
 
-  const guardarEvento = async (evento) => {
-    evento.preventDefault();
+  /* Crea o actualiza un evento */
+  const guardarEvento = async (
+    eventoFormulario
+  ) => {
+    eventoFormulario.preventDefault();
     setMensaje("");
 
     if (!validarFormulario()) {
@@ -99,7 +174,8 @@ function GestionEventos() {
 
     const datosEvento = {
       nombre: formulario.nombre.trim(),
-      descripcion: formulario.descripcion.trim(),
+      descripcion:
+        formulario.descripcion.trim(),
       ubicacion: formulario.ubicacion.trim(),
       capacidad: Number(formulario.capacidad),
       fechaInicio: formulario.fechaInicio,
@@ -111,23 +187,56 @@ function GestionEventos() {
       setGuardando(true);
 
       if (eventoEditandoId) {
-        const referenciaEvento = doc(db, "eventos", eventoEditandoId);
+        const eventoEditando =
+          obtenerEventoEditando();
+
+        const referenciaEvento = doc(
+          db,
+          "eventos",
+          eventoEditandoId
+        );
 
         await updateDoc(referenciaEvento, {
           ...datosEvento,
-          actualizadoPor: auth.currentUser.uid,
-          fechaActualizacion: serverTimestamp(),
+
+          /*
+           * Conserva el número de inscritos.
+           * Si es un evento antiguo, comienza en cero.
+           */
+          inscritosActuales: Number(
+            eventoEditando?.inscritosActuales || 0
+          ),
+
+          actualizadoPor:
+            auth.currentUser.uid,
+
+          fechaActualizacion:
+            serverTimestamp(),
         });
 
-        setMensaje("Evento actualizado correctamente.");
+        setMensaje(
+          "Evento actualizado correctamente."
+        );
       } else {
-        await addDoc(collection(db, "eventos"), {
-          ...datosEvento,
-          creadoPor: auth.currentUser.uid,
-          fechaCreacion: serverTimestamp(),
-        });
+        await addDoc(
+          collection(db, "eventos"),
+          {
+            ...datosEvento,
 
-        setMensaje("Evento guardado correctamente.");
+            /* Todo evento nuevo comienza sin inscritos */
+            inscritosActuales: 0,
+
+            creadoPor:
+              auth.currentUser.uid,
+
+            fechaCreacion:
+              serverTimestamp(),
+          }
+        );
+
+        setMensaje(
+          "Evento guardado correctamente."
+        );
       }
 
       setFormulario(formularioInicial);
@@ -135,13 +244,20 @@ function GestionEventos() {
 
       await cargarEventos();
     } catch (error) {
-      console.error("Error al guardar el evento:", error);
-      setMensaje("No fue posible guardar el evento.");
+      console.error(
+        "Error al guardar el evento:",
+        error
+      );
+
+      setMensaje(
+        "No fue posible guardar el evento."
+      );
     } finally {
       setGuardando(false);
     }
   };
 
+  /* Carga un evento en el formulario para editarlo */
   const editarEvento = (evento) => {
     setFormulario({
       nombre: evento.nombre || "",
@@ -154,7 +270,12 @@ function GestionEventos() {
     });
 
     setEventoEditandoId(evento.id);
-    setMensaje("Editando el evento seleccionado.");
+
+    setMensaje(
+      `Editando evento. Actualmente tiene ${
+        evento.inscritosActuales || 0
+      } inscritos.`
+    );
 
     window.scrollTo({
       top: 0,
@@ -162,87 +283,155 @@ function GestionEventos() {
     });
   };
 
+  /* Cancela la modificación del evento */
   const cancelarEdicion = () => {
     setFormulario(formularioInicial);
     setEventoEditandoId(null);
     setMensaje("");
   };
 
+  /* Calcula los cupos disponibles de un evento */
+  const calcularCuposDisponibles = (
+    evento
+  ) => {
+    const capacidad = Number(
+      evento.capacidad || 0
+    );
+
+    const inscritos = Number(
+      evento.inscritosActuales || 0
+    );
+
+    return Math.max(
+      capacidad - inscritos,
+      0
+    );
+  };
+
   return (
     <section>
       <h2>Gestión de eventos</h2>
-      <p>Crea y consulta los eventos registrados en el sistema.</p>
 
-      <form className="form-evento" onSubmit={guardarEvento}>
-        <label htmlFor="nombre">Nombre del evento</label>
+      <p>
+        Crea, consulta y actualiza los eventos
+        registrados en el sistema.
+      </p>
+
+      <form
+        className="form-evento"
+        onSubmit={guardarEvento}
+      >
+        <label htmlFor="nombre">
+          Nombre del evento
+        </label>
+
         <input
           id="nombre"
           name="nombre"
           type="text"
           value={formulario.nombre}
           onChange={actualizarCampo}
+          required
         />
 
-        <label htmlFor="descripcion">Descripción</label>
+        <label htmlFor="descripcion">
+          Descripción
+        </label>
+
         <textarea
           id="descripcion"
           name="descripcion"
           rows="4"
           value={formulario.descripcion}
           onChange={actualizarCampo}
+          required
         />
 
-        <label htmlFor="ubicacion">Ubicación</label>
+        <label htmlFor="ubicacion">
+          Ubicación
+        </label>
+
         <input
           id="ubicacion"
           name="ubicacion"
           type="text"
           value={formulario.ubicacion}
           onChange={actualizarCampo}
+          required
         />
 
-        <label htmlFor="capacidad">Capacidad</label>
+        <label htmlFor="capacidad">
+          Capacidad máxima
+        </label>
+
         <input
           id="capacidad"
           name="capacidad"
           type="number"
           min="1"
+          step="1"
           value={formulario.capacidad}
           onChange={actualizarCampo}
+          required
         />
 
-        <label htmlFor="fechaInicio">Fecha de inicio</label>
+        <label htmlFor="fechaInicio">
+          Fecha de inicio
+        </label>
+
         <input
           id="fechaInicio"
           name="fechaInicio"
           type="date"
           value={formulario.fechaInicio}
           onChange={actualizarCampo}
+          required
         />
 
-        <label htmlFor="fechaTermino">Fecha de término</label>
+        <label htmlFor="fechaTermino">
+          Fecha de término
+        </label>
+
         <input
           id="fechaTermino"
           name="fechaTermino"
           type="date"
           value={formulario.fechaTermino}
           onChange={actualizarCampo}
+          required
         />
 
-        <label htmlFor="estado">Estado</label>
+        <label htmlFor="estado">
+          Estado
+        </label>
+
         <select
           id="estado"
           name="estado"
           value={formulario.estado}
           onChange={actualizarCampo}
         >
-          <option value="planificado">Planificado</option>
-          <option value="activo">Activo</option>
-          <option value="finalizado">Finalizado</option>
-          <option value="cancelado">Cancelado</option>
+          <option value="planificado">
+            Planificado
+          </option>
+
+          <option value="activo">
+            Activo
+          </option>
+
+          <option value="finalizado">
+            Finalizado
+          </option>
+
+          <option value="cancelado">
+            Cancelado
+          </option>
         </select>
 
-        <button type="submit" disabled={guardando}>
+        <button
+          type="submit"
+          disabled={guardando}
+        >
           {guardando
             ? "Guardando..."
             : eventoEditandoId
@@ -261,7 +450,11 @@ function GestionEventos() {
         )}
       </form>
 
-      {mensaje && <p className="mensaje-evento">{mensaje}</p>}
+      {mensaje && (
+        <p className="mensaje-evento">
+          {mensaje}
+        </p>
+      )}
 
       <h3>Eventos registrados</h3>
 
@@ -275,6 +468,8 @@ function GestionEventos() {
                 <th>Nombre</th>
                 <th>Ubicación</th>
                 <th>Capacidad</th>
+                <th>Inscritos</th>
+                <th>Cupos disponibles</th>
                 <th>Inicio</th>
                 <th>Término</th>
                 <th>Estado</th>
@@ -288,14 +483,28 @@ function GestionEventos() {
                   <td>{evento.nombre}</td>
                   <td>{evento.ubicacion}</td>
                   <td>{evento.capacidad}</td>
+
+                  <td>
+                    {evento.inscritosActuales || 0}
+                  </td>
+
+                  <td>
+                    {calcularCuposDisponibles(
+                      evento
+                    )}
+                  </td>
+
                   <td>{evento.fechaInicio}</td>
                   <td>{evento.fechaTermino}</td>
                   <td>{evento.estado}</td>
+
                   <td>
                     <button
                       className="boton-editar"
                       type="button"
-                      onClick={() => editarEvento(evento)}
+                      onClick={() =>
+                        editarEvento(evento)
+                      }
                     >
                       Editar
                     </button>

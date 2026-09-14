@@ -12,7 +12,7 @@ import {
 
 import { db } from "../services/firebase";
 
-/* Estado inicial del formulario */
+/* Valores iniciales del formulario */
 const formularioInicial = {
   eventoId: "",
   tipoDocumento: "rut",
@@ -24,19 +24,25 @@ const formularioInicial = {
 
 /* Elimina puntos, guion y espacios del RUT */
 const limpiarRut = (rut) => {
-  return rut.replace(/[^0-9kK]/g, "").toUpperCase();
+  return rut
+    .replace(/[^0-9kK]/g, "")
+    .toUpperCase();
 };
 
-/* Comprueba el dígito verificador del RUT chileno */
+/* Comprueba el dígito verificador del RUT */
 const validarRut = (rut) => {
   const rutLimpio = limpiarRut(rut);
 
-  if (rutLimpio.length < 8 || rutLimpio.length > 9) {
+  if (
+    rutLimpio.length < 8 ||
+    rutLimpio.length > 9
+  ) {
     return false;
   }
 
   const cuerpo = rutLimpio.slice(0, -1);
-  const digitoIngresado = rutLimpio.slice(-1);
+  const digitoIngresado =
+    rutLimpio.slice(-1);
 
   if (!/^\d+$/.test(cuerpo)) {
     return false;
@@ -50,10 +56,14 @@ const validarRut = (rut) => {
     indice >= 0;
     indice -= 1
   ) {
-    suma += Number(cuerpo[indice]) * multiplicador;
+    suma +=
+      Number(cuerpo[indice]) *
+      multiplicador;
 
     multiplicador =
-      multiplicador === 7 ? 2 : multiplicador + 1;
+      multiplicador === 7
+        ? 2
+        : multiplicador + 1;
   }
 
   const resultado = 11 - (suma % 11);
@@ -68,60 +78,76 @@ const validarRut = (rut) => {
     digitoCalculado = String(resultado);
   }
 
-  return digitoCalculado === digitoIngresado;
+  return (
+    digitoCalculado === digitoIngresado
+  );
 };
 
-/* Normaliza el pasaporte para comparar valores equivalentes */
+/* Normaliza el número de pasaporte */
 const limpiarPasaporte = (pasaporte) => {
   return pasaporte
     .replace(/[^a-zA-Z0-9]/g, "")
     .toUpperCase();
 };
 
-/* Formatea automáticamente un número móvil chileno */
+/* Formatea automáticamente un teléfono chileno */
 const formatearTelefono = (valor) => {
   let numeros = valor.replace(/\D/g, "");
 
-  /* Elimina el código 56 si fue ingresado o pegado */
   if (numeros.startsWith("56")) {
     numeros = numeros.slice(2);
   }
 
-  /* Permite como máximo nueve números nacionales */
   numeros = numeros.slice(0, 9);
 
   if (!numeros) {
     return "";
   }
 
-  const primerDigito = numeros.slice(0, 1);
-  const primerBloque = numeros.slice(1, 5);
-  const segundoBloque = numeros.slice(5, 9);
+  const primerDigito =
+    numeros.slice(0, 1);
 
-  let telefonoFormateado = `+56 ${primerDigito}`;
+  const primerBloque =
+    numeros.slice(1, 5);
+
+  const segundoBloque =
+    numeros.slice(5, 9);
+
+  let telefonoFormateado =
+    `+56 ${primerDigito}`;
 
   if (primerBloque) {
-    telefonoFormateado += ` ${primerBloque}`;
+    telefonoFormateado +=
+      ` ${primerBloque}`;
   }
 
   if (segundoBloque) {
-    telefonoFormateado += ` ${segundoBloque}`;
+    telefonoFormateado +=
+      ` ${segundoBloque}`;
   }
 
   return telefonoFormateado;
 };
 
-/* Genera un identificador seguro para evitar duplicados */
-const generarIdentificador = async (texto) => {
-  const datos = new TextEncoder().encode(texto);
+/* Genera un identificador para evitar duplicados */
+const generarIdentificador = async (
+  texto
+) => {
+  const datos =
+    new TextEncoder().encode(texto);
 
-  const resultado = await crypto.subtle.digest(
-    "SHA-256",
-    datos
-  );
+  const resultado =
+    await crypto.subtle.digest(
+      "SHA-256",
+      datos
+    );
 
-  return Array.from(new Uint8Array(resultado))
-    .map((byte) => byte.toString(16).padStart(2, "0"))
+  return Array.from(
+    new Uint8Array(resultado)
+  )
+    .map((byte) =>
+      byte.toString(16).padStart(2, "0")
+    )
     .join("");
 };
 
@@ -129,103 +155,144 @@ function InscripcionPublica() {
   const [formulario, setFormulario] =
     useState(formularioInicial);
 
-  const [eventos, setEventos] = useState([]);
-  const [cargandoEventos, setCargandoEventos] =
-    useState(true);
+  const [eventos, setEventos] =
+    useState([]);
 
-  const [guardando, setGuardando] = useState(false);
-  const [mensaje, setMensaje] = useState("");
-  const [tipoMensaje, setTipoMensaje] = useState("");
-  const [codigoGenerado, setCodigoGenerado] =
+  const [
+    cargandoEventos,
+    setCargandoEventos,
+  ] = useState(true);
+
+  const [guardando, setGuardando] =
+    useState(false);
+
+  const [mensaje, setMensaje] =
     useState("");
 
-  /*
-   * Carga solamente los eventos activos
-   * disponibles para inscripción.
-   */
+  const [tipoMensaje, setTipoMensaje] =
+    useState("");
+
+  const [
+    codigoGenerado,
+    setCodigoGenerado,
+  ] = useState("");
+
+  /* Carga los eventos activos */
   useEffect(() => {
-    const cargarEventosActivos = async () => {
-      try {
-        const consulta = query(
-          collection(db, "eventos"),
-          where("estado", "==", "activo")
-        );
-
-        const resultado = await getDocs(consulta);
-
-        const listaEventos = resultado.docs
-          .map((documento) => ({
-            id: documento.id,
-            ...documento.data(),
-          }))
-          .sort((a, b) =>
-            (a.fechaInicio || "").localeCompare(
-              b.fechaInicio || ""
+    const cargarEventosActivos =
+      async () => {
+        try {
+          const consulta = query(
+            collection(db, "eventos"),
+            where(
+              "estado",
+              "==",
+              "activo"
             )
           );
 
-        setEventos(listaEventos);
-      } catch (error) {
-        console.error(
-          "Error al cargar los eventos:",
-          error
-        );
+          const resultado =
+            await getDocs(consulta);
 
-        setMensaje(
-          "No fue posible cargar los eventos disponibles."
-        );
+          const listaEventos =
+            resultado.docs
+              .map((documento) => ({
+                id: documento.id,
+                ...documento.data(),
 
-        setTipoMensaje("error");
-      } finally {
-        setCargandoEventos(false);
-      }
-    };
+                /*
+                 * Los eventos antiguos sin contador
+                 * se consideran con cero inscritos.
+                 */
+                inscritosActuales:
+                  documento.data()
+                    .inscritosActuales || 0,
+              }))
+              .sort((a, b) =>
+                (
+                  a.fechaInicio || ""
+                ).localeCompare(
+                  b.fechaInicio || ""
+                )
+              );
+
+          setEventos(listaEventos);
+        } catch (error) {
+          console.error(
+            "Error al cargar los eventos:",
+            error
+          );
+
+          setMensaje(
+            "No fue posible cargar los eventos disponibles."
+          );
+
+          setTipoMensaje("error");
+        } finally {
+          setCargandoEventos(false);
+        }
+      };
 
     cargarEventosActivos();
   }, []);
 
-  /*
-   * Actualiza los campos del formulario.
-   * El teléfono recibe un formato especial.
-   */
+  /* Actualiza los campos del formulario */
   const actualizarCampo = (evento) => {
-    const { name, value } = evento.target;
+    const { name, value } =
+      evento.target;
 
     if (name === "telefono") {
-      setFormulario((formularioActual) => ({
-        ...formularioActual,
-        telefono: formatearTelefono(value),
-      }));
+      setFormulario(
+        (formularioActual) => ({
+          ...formularioActual,
+          telefono:
+            formatearTelefono(value),
+        })
+      );
 
       return;
     }
 
-    setFormulario((formularioActual) => ({
-      ...formularioActual,
-      [name]: value,
+    setFormulario(
+      (formularioActual) => ({
+        ...formularioActual,
+        [name]: value,
 
-      /*
-       * Limpia el documento cuando se cambia
-       * entre RUT y pasaporte.
-       */
-      ...(name === "tipoDocumento"
-        ? { numeroDocumento: "" }
-        : {}),
-    }));
-  };
-
-  /* Obtiene el documento sin puntos, guiones o espacios */
-  const obtenerDocumentoNormalizado = () => {
-    if (formulario.tipoDocumento === "rut") {
-      return limpiarRut(formulario.numeroDocumento);
-    }
-
-    return limpiarPasaporte(
-      formulario.numeroDocumento
+        ...(name === "tipoDocumento"
+          ? { numeroDocumento: "" }
+          : {}),
+      })
     );
+
+    /*
+     * Limpia los mensajes cuando se selecciona
+     * un evento diferente.
+     */
+    if (name === "eventoId") {
+      setMensaje("");
+      setTipoMensaje("");
+      setCodigoGenerado("");
+    }
   };
 
-  /* Valida todos los datos antes de guardarlos */
+  /* Normaliza el documento ingresado */
+  const obtenerDocumentoNormalizado =
+    () => {
+      if (
+        formulario.tipoDocumento ===
+        "rut"
+      ) {
+        return limpiarRut(
+          formulario.numeroDocumento
+        );
+      }
+
+      return limpiarPasaporte(
+        formulario.numeroDocumento
+      );
+    };
+
+  /* Valida los datos ingresados */
   const validarFormulario = () => {
     if (
       !formulario.eventoId ||
@@ -234,30 +301,40 @@ function InscripcionPublica() {
       !formulario.correo.trim() ||
       !formulario.telefono.trim()
     ) {
-      setMensaje("Debes completar todos los campos.");
+      setMensaje(
+        "Debes completar todos los campos."
+      );
+
       setTipoMensaje("error");
       return false;
     }
 
-    /* Validación del RUT */
     if (
-      formulario.tipoDocumento === "rut" &&
-      !validarRut(formulario.numeroDocumento)
-    ) {
-      setMensaje("El RUT ingresado no es válido.");
-      setTipoMensaje("error");
-      return false;
-    }
-
-    /* Validación del pasaporte */
-    if (
-      formulario.tipoDocumento === "pasaporte" &&
-      (limpiarPasaporte(
+      formulario.tipoDocumento ===
+        "rut" &&
+      !validarRut(
         formulario.numeroDocumento
-      ).length < 5 ||
+      )
+    ) {
+      setMensaje(
+        "El RUT ingresado no es válido."
+      );
+
+      setTipoMensaje("error");
+      return false;
+    }
+
+    if (
+      formulario.tipoDocumento ===
+        "pasaporte" &&
+      (
         limpiarPasaporte(
           formulario.numeroDocumento
-        ).length > 20)
+        ).length < 5 ||
+        limpiarPasaporte(
+          formulario.numeroDocumento
+        ).length > 20
+      )
     ) {
       setMensaje(
         "Ingresa un número de pasaporte válido."
@@ -267,8 +344,11 @@ function InscripcionPublica() {
       return false;
     }
 
-    /* Validación del nombre completo */
-    if (formulario.nombreCompleto.trim().length < 3) {
+    if (
+      formulario.nombreCompleto
+        .trim()
+        .length < 3
+    ) {
       setMensaje(
         "Ingresa un nombre completo válido."
       );
@@ -277,8 +357,9 @@ function InscripcionPublica() {
       return false;
     }
 
-    /* Validación básica del correo electrónico */
-    if (!formulario.correo.includes("@")) {
+    if (
+      !formulario.correo.includes("@")
+    ) {
       setMensaje(
         "Ingresa un correo electrónico válido."
       );
@@ -287,11 +368,17 @@ function InscripcionPublica() {
       return false;
     }
 
-    /* Validación del teléfono móvil chileno */
     const telefonoNormalizado =
-      formulario.telefono.replace(/\D/g, "");
+      formulario.telefono.replace(
+        /\D/g,
+        ""
+      );
 
-    if (!/^569\d{8}$/.test(telefonoNormalizado)) {
+    if (
+      !/^569\d{8}$/.test(
+        telefonoNormalizado
+      )
+    ) {
       setMensaje(
         "Ingresa un teléfono móvil chileno válido. Ejemplo: +56 9 1234 5678."
       );
@@ -303,7 +390,29 @@ function InscripcionPublica() {
     return true;
   };
 
-  /* Guarda la inscripción en Firestore */
+  /* Calcula los cupos disponibles */
+  const calcularCuposDisponibles = (
+    evento
+  ) => {
+    if (!evento) {
+      return 0;
+    }
+
+    const capacidad = Number(
+      evento.capacidad || 0
+    );
+
+    const inscritos = Number(
+      evento.inscritosActuales || 0
+    );
+
+    return Math.max(
+      capacidad - inscritos,
+      0
+    );
+  };
+
+  /* Guarda la inscripción y reserva el cupo */
   const guardarInscripcion = async (
     eventoFormulario
   ) => {
@@ -324,8 +433,8 @@ function InscripcionPublica() {
         obtenerDocumentoNormalizado();
 
       /*
-       * La combinación del evento y documento
-       * permite detectar inscripciones duplicadas.
+       * La combinación de evento y documento
+       * impide una inscripción duplicada.
        */
       const claveInscripcion = [
         formulario.eventoId,
@@ -344,51 +453,153 @@ function InscripcionPublica() {
         identificadorInscripcion
       );
 
-      /* Genera el contenido único del código QR */
-      const codigoQR = `EC-${Date.now()}-${crypto
-        .randomUUID()
-        .slice(0, 8)}`;
+      const referenciaEvento = doc(
+        db,
+        "eventos",
+        formulario.eventoId
+      );
+
+      const codigoQR =
+        `EC-${Date.now()}-${crypto
+          .randomUUID()
+          .slice(0, 8)}`;
 
       /*
-       * La transacción comprueba que la inscripción
-       * no exista antes de crearla.
+       * La transacción comprueba:
+       * 1. Que el evento exista.
+       * 2. Que todavía esté activo.
+       * 3. Que la persona no esté inscrita.
+       * 4. Que todavía existan cupos.
        */
       await runTransaction(
         db,
         async (transaccion) => {
+          /*
+           * Todas las lecturas deben realizarse
+           * antes de comenzar las escrituras.
+           */
+          const documentoEvento =
+            await transaccion.get(
+              referenciaEvento
+            );
+
           const inscripcionExistente =
             await transaccion.get(
               referenciaInscripcion
             );
 
-          if (inscripcionExistente.exists()) {
+          if (!documentoEvento.exists()) {
+            throw new Error(
+              "EVENTO_NO_EXISTE"
+            );
+          }
+
+          const datosEvento =
+            documentoEvento.data();
+
+          if (
+            datosEvento.estado !==
+            "activo"
+          ) {
+            throw new Error(
+              "EVENTO_NO_DISPONIBLE"
+            );
+          }
+
+          if (
+            inscripcionExistente.exists()
+          ) {
             throw new Error(
               "INSCRIPCION_DUPLICADA"
             );
           }
 
+          const capacidad = Number(
+            datosEvento.capacidad || 0
+          );
+
+          const inscritosActuales =
+            Number(
+              datosEvento
+                .inscritosActuales || 0
+            );
+
+          if (
+            inscritosActuales >= capacidad
+          ) {
+            throw new Error(
+              "EVENTO_SIN_CUPOS"
+            );
+          }
+
+          /*
+           * Reserva un cupo aumentando el contador.
+           */
+          transaccion.update(
+            referenciaEvento,
+            {
+              inscritosActuales:
+                inscritosActuales + 1,
+            }
+          );
+
+          /*
+           * Crea la inscripción dentro de
+           * la misma transacción.
+           */
           transaccion.set(
             referenciaInscripcion,
             {
-              eventoId: formulario.eventoId,
+              eventoId:
+                formulario.eventoId,
+
               tipoDocumento:
                 formulario.tipoDocumento,
+
               numeroDocumento:
                 documentoNormalizado,
+
               nombreCompleto:
-                formulario.nombreCompleto.trim(),
-              correo: formulario.correo
-                .trim()
-                .toLowerCase(),
+                formulario.nombreCompleto
+                  .trim(),
+
+              correo:
+                formulario.correo
+                  .trim()
+                  .toLowerCase(),
+
               telefono:
                 formulario.telefono.trim(),
+
               codigoQR,
+
               estado: "confirmada",
+
               fechaInscripcion:
                 serverTimestamp(),
             }
           );
         }
+      );
+
+      /*
+       * Actualiza el contador mostrado sin
+       * volver a consultar todos los eventos.
+       */
+      setEventos((eventosActuales) =>
+        eventosActuales.map((evento) =>
+          evento.id ===
+          formulario.eventoId
+            ? {
+                ...evento,
+                inscritosActuales:
+                  Number(
+                    evento
+                      .inscritosActuales || 0
+                  ) + 1,
+              }
+            : evento
+        )
       );
 
       setCodigoGenerado(codigoQR);
@@ -412,6 +623,22 @@ function InscripcionPublica() {
         setMensaje(
           "Esta persona ya está inscrita en el evento seleccionado."
         );
+      } else if (
+        error.message ===
+        "EVENTO_SIN_CUPOS"
+      ) {
+        setMensaje(
+          "El evento alcanzó su capacidad máxima. No quedan cupos disponibles."
+        );
+      } else if (
+        error.message ===
+          "EVENTO_NO_EXISTE" ||
+        error.message ===
+          "EVENTO_NO_DISPONIBLE"
+      ) {
+        setMensaje(
+          "El evento seleccionado ya no está disponible."
+        );
       } else {
         setMensaje(
           "No fue posible completar la inscripción."
@@ -424,17 +651,25 @@ function InscripcionPublica() {
     }
   };
 
-  /* Busca la información del evento seleccionado */
-  const eventoSeleccionado = eventos.find(
-    (evento) =>
-      evento.id === formulario.eventoId
-  );
-
-  /* Descarga el código QR como una imagen PNG */
-  const descargarQR = () => {
-    const canvasQR = document.getElementById(
-      "codigo-qr-asistente"
+  /* Obtiene el evento seleccionado */
+  const eventoSeleccionado =
+    eventos.find(
+      (evento) =>
+        evento.id ===
+        formulario.eventoId
     );
+
+  const cuposDisponibles =
+    calcularCuposDisponibles(
+      eventoSeleccionado
+    );
+
+  /* Descarga el código QR en formato PNG */
+  const descargarQR = () => {
+    const canvasQR =
+      document.getElementById(
+        "codigo-qr-asistente"
+      );
 
     if (!canvasQR) {
       return;
@@ -458,26 +693,33 @@ function InscripcionPublica() {
     <main className="inscripcion-page">
       <section className="inscripcion-card">
         <div className="inscripcion-marca">
-          <span className="brand-icon">EC</span>
+          <span className="brand-icon">
+            EC
+          </span>
 
           <div>
             <h1>EventControl</h1>
-            <p>Inscripción de asistentes</p>
+            <p>
+              Inscripción de asistentes
+            </p>
           </div>
         </div>
 
         <h2>Inscripción a eventos</h2>
 
         <p className="inscripcion-descripcion">
-          Completa tus datos para registrar tu
-          participación.
+          Completa tus datos para registrar
+          tu participación.
         </p>
 
         {cargandoEventos ? (
-          <p>Cargando eventos disponibles...</p>
+          <p>
+            Cargando eventos disponibles...
+          </p>
         ) : eventos.length === 0 ? (
           <p className="mensaje-inscripcion error">
-            No existen eventos activos disponibles.
+            No existen eventos activos
+            disponibles.
           </p>
         ) : (
           <form
@@ -499,32 +741,64 @@ function InscripcionPublica() {
                 Selecciona un evento
               </option>
 
-              {eventos.map((evento) => (
-                <option
-                  key={evento.id}
-                  value={evento.id}
-                >
-                  {evento.nombre}
-                </option>
-              ))}
+              {eventos.map((evento) => {
+                const disponibles =
+                  calcularCuposDisponibles(
+                    evento
+                  );
+
+                return (
+                  <option
+                    key={evento.id}
+                    value={evento.id}
+                    disabled={
+                      disponibles === 0
+                    }
+                  >
+                    {evento.nombre} —{" "}
+                    {disponibles > 0
+                      ? `${disponibles} cupos disponibles`
+                      : "Sin cupos"}
+                  </option>
+                );
+              })}
             </select>
 
             {eventoSeleccionado && (
               <div className="evento-seleccionado">
                 <p>
-                  <strong>Ubicación:</strong>{" "}
-                  {eventoSeleccionado.ubicacion}
+                  <strong>
+                    Ubicación:
+                  </strong>{" "}
+                  {
+                    eventoSeleccionado
+                      .ubicacion
+                  }
                 </p>
 
                 <p>
                   <strong>Fecha:</strong>{" "}
-                  {eventoSeleccionado.fechaInicio}
+                  {
+                    eventoSeleccionado
+                      .fechaInicio
+                  }
 
                   {eventoSeleccionado
                     .fechaTermino !==
                     eventoSeleccionado
                       .fechaInicio &&
                     ` al ${eventoSeleccionado.fechaTermino}`}
+                </p>
+
+                <p>
+                  <strong>
+                    Cupos disponibles:
+                  </strong>{" "}
+                  {cuposDisponibles} de{" "}
+                  {
+                    eventoSeleccionado
+                      .capacidad
+                  }
                 </p>
               </div>
             )}
@@ -536,7 +810,9 @@ function InscripcionPublica() {
             <select
               id="tipoDocumento"
               name="tipoDocumento"
-              value={formulario.tipoDocumento}
+              value={
+                formulario.tipoDocumento
+              }
               onChange={actualizarCampo}
               required
             >
@@ -550,7 +826,8 @@ function InscripcionPublica() {
             </select>
 
             <label htmlFor="numeroDocumento">
-              {formulario.tipoDocumento === "rut"
+              {formulario.tipoDocumento ===
+              "rut"
                 ? "RUT"
                 : "Número de pasaporte"}
             </label>
@@ -559,7 +836,9 @@ function InscripcionPublica() {
               id="numeroDocumento"
               name="numeroDocumento"
               type="text"
-              value={formulario.numeroDocumento}
+              value={
+                formulario.numeroDocumento
+              }
               onChange={actualizarCampo}
               placeholder={
                 formulario.tipoDocumento ===
@@ -579,7 +858,9 @@ function InscripcionPublica() {
               id="nombreCompleto"
               name="nombreCompleto"
               type="text"
-              value={formulario.nombreCompleto}
+              value={
+                formulario.nombreCompleto
+              }
               onChange={actualizarCampo}
               placeholder="Ejemplo: Juan Pérez Soto"
               autoComplete="name"
@@ -620,11 +901,20 @@ function InscripcionPublica() {
 
             <button
               type="submit"
-              disabled={guardando}
+              disabled={
+                guardando ||
+                (
+                  eventoSeleccionado &&
+                  cuposDisponibles === 0
+                )
+              }
             >
               {guardando
                 ? "Registrando..."
-                : "Completar inscripción"}
+                : eventoSeleccionado &&
+                    cuposDisponibles === 0
+                  ? "Evento sin cupos"
+                  : "Completar inscripción"}
             </button>
           </form>
         )}
@@ -639,11 +929,13 @@ function InscripcionPublica() {
 
         {codigoGenerado && (
           <div className="codigo-confirmacion">
-            <h3>Inscripción confirmada</h3>
+            <h3>
+              Inscripción confirmada
+            </h3>
 
             <p>
-              Presenta este código QR al ingresar
-              al evento.
+              Presenta este código QR al
+              ingresar al evento.
             </p>
 
             <div className="contenedor-qr">
@@ -663,7 +955,9 @@ function InscripcionPublica() {
               Código de inscripción:
             </p>
 
-            <strong>{codigoGenerado}</strong>
+            <strong>
+              {codigoGenerado}
+            </strong>
 
             <button
               className="boton-descargar-qr"
