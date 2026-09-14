@@ -1,0 +1,40 @@
+{
+  "NMphIjS4TXLc20hlyqY2": {
+    "ubicacion": "peñalolen",
+    "descripcion": "prueba de la nueva prueba",
+    "estado": "activo",
+    "fechaTermino": "2026-09-06",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "nombre": "pruena nueva",
+    "capacidad": 30,
+    "fechaInicio": "2026-09-05",
+    "fechaCreacion": {
+      "_seconds": 1788660387,
+      "_nanoseconds": 370000000
+    },
+    "fechaActualizacion": {
+      "_seconds": 1788719310,
+      "_nanoseconds": 894000000
+    },
+    "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2"
+  },
+  "vUSbJ38N3dCRoUiYiM8i": {
+    "nombre": "Evento prueba",
+    "descripcion": "prueba de evento",
+    "ubicacion": "santiago",
+    "capacidad": 20,
+    "fechaInicio": "2026-08-25",
+    "fechaTermino": "2026-08-25",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1787677927,
+      "_nanoseconds": 841000000
+    },
+    "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "estado": "finalizado",
+    "fechaActualizacion": {
+      "_seconds": 1788719040,
+      "_nanoseconds": 565000000
+    }
+  }
+}
