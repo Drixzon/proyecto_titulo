@@ -1,0 +1,74 @@
+{
+  "AWuhvBfGPb4ERHBuLVou": {
+    "eventoId": "7BmEO1eikzPLDJkKbKnQ",
+    "fecha": "2026-09-23",
+    "inicio": "08:15",
+    "termino": "17:15",
+    "almuerzoHabilitado": true,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789348334,
+      "_nanoseconds": 665000000
+    }
+  },
+  "IRfXpDWkKMYU9ZQ9q27D": {
+    "eventoId": "vUSbJ38N3dCRoUiYiM8i",
+    "fecha": "2026-08-25",
+    "inicio": "16:16",
+    "termino": "19:16",
+    "almuerzoHabilitado": false,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1787685382,
+      "_nanoseconds": 962000000
+    }
+  },
+  "KDrIYhJz3d9tGhyRWMLV": {
+    "inicio": "09:00",
+    "almuerzoHabilitado": true,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "fecha": "2026-09-06",
+    "termino": "21:00",
+    "fechaCreacion": {
+      "_seconds": 1788719412,
+      "_nanoseconds": 975000000
+    }
+  },
+  "e1JoLBhYdWmz4NIepvbK": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "fecha": "2026-09-13",
+    "inicio": "08:30",
+    "termino": "16:30",
+    "almuerzoHabilitado": true,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789265618,
+      "_nanoseconds": 749000000
+    }
+  },
+  "p8IUwSc0VUXNpmZi3B7l": {
+    "eventoId": "e9RfdiJgYCD7NKZOL0Xh",
+    "fecha": "2026-09-18",
+    "inicio": "10:15",
+    "termino": "13:00",
+    "almuerzoHabilitado": false,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789402361,
+      "_nanoseconds": 111000000
+    }
+  },
+  "rRuDbVuHXcPbXLOef5zP": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "fecha": "2026-09-12",
+    "inicio": "22:05",
+    "termino": "23:06",
+    "almuerzoHabilitado": false,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789261546,
+      "_nanoseconds": 300000000
+    }
+  }
+}

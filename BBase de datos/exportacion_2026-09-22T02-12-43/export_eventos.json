@@ -1,0 +1,106 @@
+{
+  "7BmEO1eikzPLDJkKbKnQ": {
+    "nombre": "Congreso joven",
+    "descripcion": "Está es una prueba del congrsso",
+    "ubicacion": "La reina",
+    "capacidad": 120,
+    "fechaInicio": "2026-09-23",
+    "fechaTermino": "2026-09-27",
+    "estado": "activo",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789348196,
+      "_nanoseconds": 39000000
+    },
+    "inscritosActuales": 1
+  },
+  "NMphIjS4TXLc20hlyqY2": {
+    "ubicacion": "peñalolen",
+    "descripcion": "prueba de la nueva prueba",
+    "estado": "activo",
+    "fechaTermino": "2026-09-06",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "nombre": "pruena nueva",
+    "capacidad": 30,
+    "fechaInicio": "2026-09-05",
+    "fechaCreacion": {
+      "_seconds": 1788660387,
+      "_nanoseconds": 370000000
+    },
+    "fechaActualizacion": {
+      "_seconds": 1788719310,
+      "_nanoseconds": 894000000
+    },
+    "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "inscritosActuales": 2
+  },
+  "e9RfdiJgYCD7NKZOL0Xh": {
+    "nombre": "Prueba de talleres",
+    "descripcion": "prueba talleres congreso",
+    "ubicacion": "JAAA",
+    "capacidad": 3,
+    "fechaInicio": "2026-09-18",
+    "fechaTermino": "2026-09-18",
+    "estado": "activo",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789402328,
+      "_nanoseconds": 487000000
+    },
+    "inscritosActuales": 2
+  },
+  "lZpdJwDzyNhJnP6dw2l8": {
+    "nombre": "Test",
+    "descripcion": "ssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadas",
+    "ubicacion": "asdf",
+    "capacidad": 3,
+    "fechaInicio": "2026-09-21",
+    "fechaTermino": "2026-09-24",
+    "estado": "planificado",
+    "inscritosActuales": 0,
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1790004554,
+      "_nanoseconds": 746000000
+    }
+  },
+  "vUSbJ38N3dCRoUiYiM8i": {
+    "nombre": "Evento prueba",
+    "descripcion": "prueba de evento",
+    "ubicacion": "santiago",
+    "capacidad": 20,
+    "fechaInicio": "2026-08-25",
+    "fechaTermino": "2026-08-25",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1787677927,
+      "_nanoseconds": 841000000
+    },
+    "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "estado": "finalizado",
+    "fechaActualizacion": {
+      "_seconds": 1788719040,
+      "_nanoseconds": 565000000
+    }
+  },
+  "vxKXGM09T3YwjF1SkE2N": {
+    "nombre": "Nueva prueba",
+    "descripcion": "pruena nueva nueva",
+    "ubicacion": "JAAA",
+    "capacidad": 3,
+    "fechaInicio": "2026-09-12",
+    "fechaTermino": "2026-09-13",
+    "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "fechaCreacion": {
+      "_seconds": 1789261502,
+      "_nanoseconds": 383000000
+    },
+    "estado": "activo",
+    "fechaActualizacion": {
+      "_seconds": 1789265052,
+      "_nanoseconds": 190000000
+    },
+    "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "inscritosActuales": 3
+  }
+}

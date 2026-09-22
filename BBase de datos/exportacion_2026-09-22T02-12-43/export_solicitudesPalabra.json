@@ -1,0 +1,35 @@
+{
+  "0fca3L7w3R7CC0ET6tb4": {
+    "inscripcionId": "E4Vrhm3MwPgWZMI32O36",
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+    "solicitud": "hola pruena de pregunta",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "fechaSolicitud": {
+      "_seconds": 1789262187,
+      "_nanoseconds": 582000000
+    },
+    "revisadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "estado": "atendida",
+    "fechaRevision": {
+      "_seconds": 1790004584,
+      "_nanoseconds": 931000000
+    }
+  },
+  "k2h3KSXj2NS96Nor30WK": {
+    "orden": 1,
+    "inscripcionId": "",
+    "fechaSolicitud": {
+      "_seconds": 1788228193,
+      "_nanoseconds": 0
+    },
+    "jornadaId": "",
+    "pregunta": "",
+    "revisadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+    "estado": "pendiente",
+    "fechaRevision": {
+      "_seconds": 1790004578,
+      "_nanoseconds": 412000000
+    }
+  }
+}

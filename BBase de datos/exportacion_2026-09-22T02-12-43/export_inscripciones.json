@@ -1,0 +1,273 @@
+{
+  "15c834640f022042e541aad3eb83ff4345714c836f5fced5e9d5624df1e95647": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "PA234244",
+    "nombreCompleto": "Juan Antonio Aravena Gallardo",
+    "correo": "juan.aravena.90@gmail.com",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789348561147-4f4f32ad",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789348561,
+      "_nanoseconds": 221000000
+    },
+    "inscritosActuales": 0
+  },
+  "2273eec11e784a86ffae6ce84fca6af4a0afac4eeeb162cb0a24cc2d56b61bbb": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "UIU6780",
+    "nombreCompleto": "iglesia adventistas del 7 dia",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789357386436-ea44e930",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789357386,
+      "_nanoseconds": 620000000
+    }
+  },
+  "23a8a381331b9eef093f0c610eaf46751d4157cea5b35fe3d2bad4032ae14e5c": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "POP6889",
+    "nombreCompleto": "Juan Antonino Aravena Gallardo",
+    "correo": "juan.aravena.90@gmail.com",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789357358987-1f5ed103",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789357359,
+      "_nanoseconds": 138000000
+    }
+  },
+  "274d5ba842114cba470148707d5f30f054f325335b0eb2c152c78ae9e119ea78": {
+    "eventoId": "e9RfdiJgYCD7NKZOL0Xh",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "157827731",
+    "nombreCompleto": "Gioryana Avello Viveros",
+    "correo": "gavelloviveros@gmail.com",
+    "telefono": "+56 9 9711 9683",
+    "codigoQR": "EC-1789403027874-673cde61",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789403028,
+      "_nanoseconds": 474000000
+    }
+  },
+  "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "191841220",
+    "nombreCompleto": "Marjorie",
+    "correo": "marjorie.retamal@coanil.cl",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789348480692-89a5da03",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789348480,
+      "_nanoseconds": 787000000
+    },
+    "inscritosActuales": 1
+  },
+  "6a6ef6bc769b4b49718b4115b9e5f2c85161f18278ca4cf574d48b55b76b7df9": {
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "PA2332232",
+    "nombreCompleto": "Juan Antonino Aravena Gallardo",
+    "correo": "juan.aravena.90@gmail.com",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789435974455-57a872af",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789435974,
+      "_nanoseconds": 553000000
+    }
+  },
+  "7a4d5a7325e9b7512111d3b75dfcde4f9956464da8988a0c82b1396de9773100": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "122736016",
+    "nombreCompleto": "Mama may",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789348596386-9d15f950",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789348596,
+      "_nanoseconds": 469000000
+    },
+    "inscritosActuales": 2
+  },
+  "88d97f745619dd0b0cddc6153b6749a7a9f341027fee60298b5cc37e542fe8c4": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "PSW242424",
+    "nombreCompleto": "juan Aravena Gallardo",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789357206200-eb7f5198",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789357206,
+      "_nanoseconds": 482000000
+    }
+  },
+  "9205000670c67fe566edade1ef5110321c185fdb10bccb3018b85bdf40289faf": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "174216495",
+    "nombreCompleto": "juan",
+    "correo": "asds@ads.cl",
+    "telefono": "sdsd",
+    "codigoQR": "EC-1789266515206-277ff534",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789266515,
+      "_nanoseconds": 632000000
+    }
+  },
+  "994b5260204c3b9c7469297edc2e4d19933037ed6895673bf7f14b676eaa7282": {
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "191841220",
+    "nombreCompleto": "marjorie retamal",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "asdsa",
+    "codigoQR": "EC-1789315954127-6eabe5ac",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789315954,
+      "_nanoseconds": 66000000
+    }
+  },
+  "E4Vrhm3MwPgWZMI32O36": {
+    "nombreCompleto": "juanito perez",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+5695086784",
+    "codigoQR": "EC-1789261687504-e846ecd7",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789261687,
+      "_nanoseconds": 640000000
+    },
+    "eventoId": "vxKXGM09T3YwjF1SkE2N"
+  },
+  "We4v0lxQ7HvhylD3LJyI": {
+    "nombreCompleto": "marjorie retamal",
+    "telefono": "+5695086784",
+    "estado": "confirmada",
+    "correo": "marjorie.srh@gmail.com",
+    "codigoQR": "EC-1788660513876-093593fa",
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "fechaInscripcion": {
+      "_seconds": 1788660513,
+      "_nanoseconds": 983000000
+    }
+  },
+  "YkJZoaa3TlTEyDB7cxE0": {
+    "telefono": "950845631",
+    "estado": "confirmada",
+    "correo": "juan.aravena@adventistas.org",
+    "nombreCompleto": "juan pruena",
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "codigoQR": "EC-1788661320242-8a2ba74e",
+    "fechaInscripcion": {
+      "_seconds": 1788661320,
+      "_nanoseconds": 378000000
+    }
+  },
+  "ZUXF5i1ychwi937HIQVp": {
+    "codigoQR": "EVT-001-ASIS-001",
+    "nombreCompleto": "Asistente de Prueba",
+    "fechaInscripcion": {
+      "_seconds": 1788227562,
+      "_nanoseconds": 0
+    },
+    "estado": "confirmada",
+    "correo": "asistente.prueba@correo.cl",
+    "telefono": "+56912345678",
+    "eventoId": "vUSbJ38N3dCRoUiYiM8i"
+  },
+  "a0750ae4d6a59e2f7cc1d7589222ded531edffba544f3f18c1c4cf81bec23045": {
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "PA3232",
+    "nombreCompleto": "iglesia adventistas del 7 dia",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789436042535-50afa4f2",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789436042,
+      "_nanoseconds": 332000000
+    }
+  },
+  "ao3Ucu92nhiu4OHWzlte": {
+    "eventoId": "vxKXGM09T3YwjF1SkE2N",
+    "nombreCompleto": "May",
+    "correo": "marjorie.retamal@coanil.cl",
+    "telefono": "930299807",
+    "codigoQR": "EC-1789265156124-f86e6cad",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789265156,
+      "_nanoseconds": 746000000
+    }
+  },
+  "b293e2366620dc1c6ec370e0be76766f07720801e370b473751c82efb8d36377": {
+    "eventoId": "e9RfdiJgYCD7NKZOL0Xh",
+    "tipoDocumento": "pasaporte",
+    "numeroDocumento": "SCAACAS",
+    "nombreCompleto": "juan Aravena Gallardo",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+56 9 5084 5631",
+    "codigoQR": "EC-1789435838093-20e2a28d",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789435837,
+      "_nanoseconds": 988000000
+    }
+  },
+  "c033f729c1b6fb502ad118f6890092e1bd9362a778276b1e214164fa9668e558": {
+    "eventoId": "7BmEO1eikzPLDJkKbKnQ",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "174216495",
+    "nombreCompleto": "juan Aravena Gallardo",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+56 9 5084 5691",
+    "codigoQR": "EC-1789436239418-e4b834f5",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789436239,
+      "_nanoseconds": 356000000
+    }
+  },
+  "d5d04e69de549c26941f7c461346a6433b95d6c1aa1119a4b2ba1c4a5b5a3380": {
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "tipoDocumento": "rut",
+    "numeroDocumento": "174216495",
+    "nombreCompleto": "marjorie retamal",
+    "correo": "juan.aravena@adventistas.org",
+    "telefono": "+569508678",
+    "codigoQR": "EC-1789315848606-7e884af9",
+    "estado": "confirmada",
+    "fechaInscripcion": {
+      "_seconds": 1789315848,
+      "_nanoseconds": 579000000
+    }
+  },
+  "sWnW6hmy1ADUnAAq9wmz": {
+    "estado": "confirmada",
+    "eventoId": "NMphIjS4TXLc20hlyqY2",
+    "correo": "juan.aravena.90@gmail.com",
+    "nombreCompleto": "juan pruena2",
+    "codigoQR": "EC-1788719075163-694c2b95",
+    "telefono": "950845631",
+    "fechaInscripcion": {
+      "_seconds": 1788719075,
+      "_nanoseconds": 116000000
+    }
+  }
+}

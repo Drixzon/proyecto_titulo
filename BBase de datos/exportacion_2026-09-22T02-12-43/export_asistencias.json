@@ -1,0 +1,90 @@
+{
+  "274d5ba842114cba470148707d5f30f054f325335b0eb2c152c78ae9e119ea78_p8IUwSc0VUXNpmZi3B7l": {
+    "inscripcionId": "274d5ba842114cba470148707d5f30f054f325335b0eb2c152c78ae9e119ea78",
+    "jornadaId": "p8IUwSc0VUXNpmZi3B7l",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "metodo": "qr",
+    "estado": "ingresado",
+    "fechaHoraIngreso": {
+      "_seconds": 1789403082,
+      "_nanoseconds": 142000000
+    }
+  },
+  "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8_e1JoLBhYdWmz4NIepvbK": {
+    "inscripcionId": "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8",
+    "jornadaId": "e1JoLBhYdWmz4NIepvbK",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "metodo": "qr",
+    "estado": "ingresado",
+    "fechaHoraIngreso": {
+      "_seconds": 1789348684,
+      "_nanoseconds": 450000000
+    }
+  },
+  "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8_rRuDbVuHXcPbXLOef5zP": {
+    "inscripcionId": "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8",
+    "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "metodo": "qr",
+    "estado": "ingresado",
+    "fechaHoraIngreso": {
+      "_seconds": 1789349134,
+      "_nanoseconds": 223000000
+    }
+  },
+  "E4Vrhm3MwPgWZMI32O36_rRuDbVuHXcPbXLOef5zP": {
+    "inscripcionId": "E4Vrhm3MwPgWZMI32O36",
+    "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "metodo": "qr",
+    "estado": "ingresado",
+    "fechaHoraIngreso": {
+      "_seconds": 1789264885,
+      "_nanoseconds": 634000000
+    }
+  },
+  "YkJZoaa3TlTEyDB7cxE0_KDrIYhJz3d9tGhyRWMLV": {
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+    "estado": "ingresado",
+    "metodo": "qr",
+    "inscripcionId": "YkJZoaa3TlTEyDB7cxE0",
+    "fechaHoraIngreso": {
+      "_seconds": 1788720799,
+      "_nanoseconds": 367000000
+    }
+  },
+  "ao3Ucu92nhiu4OHWzlte_rRuDbVuHXcPbXLOef5zP": {
+    "inscripcionId": "ao3Ucu92nhiu4OHWzlte",
+    "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "metodo": "qr",
+    "estado": "ingresado",
+    "fechaHoraIngreso": {
+      "_seconds": 1789265173,
+      "_nanoseconds": 810000000
+    }
+  },
+  "fZ77sJZwotjeNccXT87C": {
+    "fechaHoraIngreso": {
+      "_seconds": 1788227734,
+      "_nanoseconds": 0
+    },
+    "estado": "ingresado",
+    "metodo": "manual",
+    "inscripcionId": "ZUXF5i1ychwi937HIQVp",
+    "jornadaId": "IRfXpDWkKMYU9ZQ9q27D",
+    "registradoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2"
+  },
+  "sWnW6hmy1ADUnAAq9wmz_KDrIYhJz3d9tGhyRWMLV": {
+    "estado": "ingresado",
+    "metodo": "manual",
+    "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+    "inscripcionId": "sWnW6hmy1ADUnAAq9wmz",
+    "fechaHoraIngreso": {
+      "_seconds": 1788719467,
+      "_nanoseconds": 274000000
+    }
+  }
+}

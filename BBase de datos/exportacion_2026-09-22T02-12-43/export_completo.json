@@ -1,0 +1,636 @@
+{
+  "asistencias": {
+    "274d5ba842114cba470148707d5f30f054f325335b0eb2c152c78ae9e119ea78_p8IUwSc0VUXNpmZi3B7l": {
+      "inscripcionId": "274d5ba842114cba470148707d5f30f054f325335b0eb2c152c78ae9e119ea78",
+      "jornadaId": "p8IUwSc0VUXNpmZi3B7l",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "metodo": "qr",
+      "estado": "ingresado",
+      "fechaHoraIngreso": {
+        "_seconds": 1789403082,
+        "_nanoseconds": 142000000
+      }
+    },
+    "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8_e1JoLBhYdWmz4NIepvbK": {
+      "inscripcionId": "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8",
+      "jornadaId": "e1JoLBhYdWmz4NIepvbK",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "metodo": "qr",
+      "estado": "ingresado",
+      "fechaHoraIngreso": {
+        "_seconds": 1789348684,
+        "_nanoseconds": 450000000
+      }
+    },
+    "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8_rRuDbVuHXcPbXLOef5zP": {
+      "inscripcionId": "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8",
+      "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "metodo": "qr",
+      "estado": "ingresado",
+      "fechaHoraIngreso": {
+        "_seconds": 1789349134,
+        "_nanoseconds": 223000000
+      }
+    },
+    "E4Vrhm3MwPgWZMI32O36_rRuDbVuHXcPbXLOef5zP": {
+      "inscripcionId": "E4Vrhm3MwPgWZMI32O36",
+      "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "metodo": "qr",
+      "estado": "ingresado",
+      "fechaHoraIngreso": {
+        "_seconds": 1789264885,
+        "_nanoseconds": 634000000
+      }
+    },
+    "YkJZoaa3TlTEyDB7cxE0_KDrIYhJz3d9tGhyRWMLV": {
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+      "estado": "ingresado",
+      "metodo": "qr",
+      "inscripcionId": "YkJZoaa3TlTEyDB7cxE0",
+      "fechaHoraIngreso": {
+        "_seconds": 1788720799,
+        "_nanoseconds": 367000000
+      }
+    },
+    "ao3Ucu92nhiu4OHWzlte_rRuDbVuHXcPbXLOef5zP": {
+      "inscripcionId": "ao3Ucu92nhiu4OHWzlte",
+      "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "metodo": "qr",
+      "estado": "ingresado",
+      "fechaHoraIngreso": {
+        "_seconds": 1789265173,
+        "_nanoseconds": 810000000
+      }
+    },
+    "fZ77sJZwotjeNccXT87C": {
+      "fechaHoraIngreso": {
+        "_seconds": 1788227734,
+        "_nanoseconds": 0
+      },
+      "estado": "ingresado",
+      "metodo": "manual",
+      "inscripcionId": "ZUXF5i1ychwi937HIQVp",
+      "jornadaId": "IRfXpDWkKMYU9ZQ9q27D",
+      "registradoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2"
+    },
+    "sWnW6hmy1ADUnAAq9wmz_KDrIYhJz3d9tGhyRWMLV": {
+      "estado": "ingresado",
+      "metodo": "manual",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+      "inscripcionId": "sWnW6hmy1ADUnAAq9wmz",
+      "fechaHoraIngreso": {
+        "_seconds": 1788719467,
+        "_nanoseconds": 274000000
+      }
+    }
+  },
+  "entregasAlmuerzo": {
+    "Jl3eg6JvrMgbqm03c1PS": {
+      "fechaHoraEntrega": {
+        "_seconds": 1788227930,
+        "_nanoseconds": 0
+      },
+      "entregado": true,
+      "inscripcionId": "ZUXF5i1ychwi937HIQVp",
+      "jornadaId": "IRfXpDWkKMYU9ZQ9q27D",
+      "registradoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2"
+    },
+    "YkJZoaa3TlTEyDB7cxE0_KDrIYhJz3d9tGhyRWMLV": {
+      "inscripcionId": "YkJZoaa3TlTEyDB7cxE0",
+      "entregadoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "asistenciaId": "YkJZoaa3TlTEyDB7cxE0_KDrIYhJz3d9tGhyRWMLV",
+      "estado": "entregado",
+      "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+      "fechaHoraEntrega": {
+        "_seconds": 1788722538,
+        "_nanoseconds": 722000000
+      }
+    },
+    "sWnW6hmy1ADUnAAq9wmz_KDrIYhJz3d9tGhyRWMLV": {
+      "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+      "inscripcionId": "sWnW6hmy1ADUnAAq9wmz",
+      "estado": "entregado",
+      "entregadoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "asistenciaId": "sWnW6hmy1ADUnAAq9wmz_KDrIYhJz3d9tGhyRWMLV",
+      "fechaHoraEntrega": {
+        "_seconds": 1788722050,
+        "_nanoseconds": 67000000
+      }
+    }
+  },
+  "eventos": {
+    "7BmEO1eikzPLDJkKbKnQ": {
+      "nombre": "Congreso joven",
+      "descripcion": "Está es una prueba del congrsso",
+      "ubicacion": "La reina",
+      "capacidad": 120,
+      "fechaInicio": "2026-09-23",
+      "fechaTermino": "2026-09-27",
+      "estado": "activo",
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789348196,
+        "_nanoseconds": 39000000
+      },
+      "inscritosActuales": 1
+    },
+    "NMphIjS4TXLc20hlyqY2": {
+      "ubicacion": "peñalolen",
+      "descripcion": "prueba de la nueva prueba",
+      "estado": "activo",
+      "fechaTermino": "2026-09-06",
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "nombre": "pruena nueva",
+      "capacidad": 30,
+      "fechaInicio": "2026-09-05",
+      "fechaCreacion": {
+        "_seconds": 1788660387,
+        "_nanoseconds": 370000000
+      },
+      "fechaActualizacion": {
+        "_seconds": 1788719310,
+        "_nanoseconds": 894000000
+      },
+      "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "inscritosActuales": 2
+    },
+    "e9RfdiJgYCD7NKZOL0Xh": {
+      "nombre": "Prueba de talleres",
+      "descripcion": "prueba talleres congreso",
+      "ubicacion": "JAAA",
+      "capacidad": 3,
+      "fechaInicio": "2026-09-18",
+      "fechaTermino": "2026-09-18",
+      "estado": "activo",
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789402328,
+        "_nanoseconds": 487000000
+      },
+      "inscritosActuales": 2
+    },
+    "lZpdJwDzyNhJnP6dw2l8": {
+      "nombre": "Test",
+      "descripcion": "ssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadasssadsasadsadasdsaasdsadsadsadasdsadsadsadasdasdsadasdsadas",
+      "ubicacion": "asdf",
+      "capacidad": 3,
+      "fechaInicio": "2026-09-21",
+      "fechaTermino": "2026-09-24",
+      "estado": "planificado",
+      "inscritosActuales": 0,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1790004554,
+        "_nanoseconds": 746000000
+      }
+    },
+    "vUSbJ38N3dCRoUiYiM8i": {
+      "nombre": "Evento prueba",
+      "descripcion": "prueba de evento",
+      "ubicacion": "santiago",
+      "capacidad": 20,
+      "fechaInicio": "2026-08-25",
+      "fechaTermino": "2026-08-25",
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1787677927,
+        "_nanoseconds": 841000000
+      },
+      "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "estado": "finalizado",
+      "fechaActualizacion": {
+        "_seconds": 1788719040,
+        "_nanoseconds": 565000000
+      }
+    },
+    "vxKXGM09T3YwjF1SkE2N": {
+      "nombre": "Nueva prueba",
+      "descripcion": "pruena nueva nueva",
+      "ubicacion": "JAAA",
+      "capacidad": 3,
+      "fechaInicio": "2026-09-12",
+      "fechaTermino": "2026-09-13",
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789261502,
+        "_nanoseconds": 383000000
+      },
+      "estado": "activo",
+      "fechaActualizacion": {
+        "_seconds": 1789265052,
+        "_nanoseconds": 190000000
+      },
+      "actualizadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "inscritosActuales": 3
+    }
+  },
+  "inscripciones": {
+    "15c834640f022042e541aad3eb83ff4345714c836f5fced5e9d5624df1e95647": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "PA234244",
+      "nombreCompleto": "Juan Antonio Aravena Gallardo",
+      "correo": "juan.aravena.90@gmail.com",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789348561147-4f4f32ad",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789348561,
+        "_nanoseconds": 221000000
+      },
+      "inscritosActuales": 0
+    },
+    "2273eec11e784a86ffae6ce84fca6af4a0afac4eeeb162cb0a24cc2d56b61bbb": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "UIU6780",
+      "nombreCompleto": "iglesia adventistas del 7 dia",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789357386436-ea44e930",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789357386,
+        "_nanoseconds": 620000000
+      }
+    },
+    "23a8a381331b9eef093f0c610eaf46751d4157cea5b35fe3d2bad4032ae14e5c": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "POP6889",
+      "nombreCompleto": "Juan Antonino Aravena Gallardo",
+      "correo": "juan.aravena.90@gmail.com",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789357358987-1f5ed103",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789357359,
+        "_nanoseconds": 138000000
+      }
+    },
+    "274d5ba842114cba470148707d5f30f054f325335b0eb2c152c78ae9e119ea78": {
+      "eventoId": "e9RfdiJgYCD7NKZOL0Xh",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "157827731",
+      "nombreCompleto": "Gioryana Avello Viveros",
+      "correo": "gavelloviveros@gmail.com",
+      "telefono": "+56 9 9711 9683",
+      "codigoQR": "EC-1789403027874-673cde61",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789403028,
+        "_nanoseconds": 474000000
+      }
+    },
+    "5ecbf91b6a924b0466c63aa70133548297e134a4722730f4a460e5748b84c7b8": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "191841220",
+      "nombreCompleto": "Marjorie",
+      "correo": "marjorie.retamal@coanil.cl",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789348480692-89a5da03",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789348480,
+        "_nanoseconds": 787000000
+      },
+      "inscritosActuales": 1
+    },
+    "6a6ef6bc769b4b49718b4115b9e5f2c85161f18278ca4cf574d48b55b76b7df9": {
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "PA2332232",
+      "nombreCompleto": "Juan Antonino Aravena Gallardo",
+      "correo": "juan.aravena.90@gmail.com",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789435974455-57a872af",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789435974,
+        "_nanoseconds": 553000000
+      }
+    },
+    "7a4d5a7325e9b7512111d3b75dfcde4f9956464da8988a0c82b1396de9773100": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "122736016",
+      "nombreCompleto": "Mama may",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789348596386-9d15f950",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789348596,
+        "_nanoseconds": 469000000
+      },
+      "inscritosActuales": 2
+    },
+    "88d97f745619dd0b0cddc6153b6749a7a9f341027fee60298b5cc37e542fe8c4": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "PSW242424",
+      "nombreCompleto": "juan Aravena Gallardo",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789357206200-eb7f5198",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789357206,
+        "_nanoseconds": 482000000
+      }
+    },
+    "9205000670c67fe566edade1ef5110321c185fdb10bccb3018b85bdf40289faf": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "174216495",
+      "nombreCompleto": "juan",
+      "correo": "asds@ads.cl",
+      "telefono": "sdsd",
+      "codigoQR": "EC-1789266515206-277ff534",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789266515,
+        "_nanoseconds": 632000000
+      }
+    },
+    "994b5260204c3b9c7469297edc2e4d19933037ed6895673bf7f14b676eaa7282": {
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "191841220",
+      "nombreCompleto": "marjorie retamal",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "asdsa",
+      "codigoQR": "EC-1789315954127-6eabe5ac",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789315954,
+        "_nanoseconds": 66000000
+      }
+    },
+    "E4Vrhm3MwPgWZMI32O36": {
+      "nombreCompleto": "juanito perez",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+5695086784",
+      "codigoQR": "EC-1789261687504-e846ecd7",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789261687,
+        "_nanoseconds": 640000000
+      },
+      "eventoId": "vxKXGM09T3YwjF1SkE2N"
+    },
+    "We4v0lxQ7HvhylD3LJyI": {
+      "nombreCompleto": "marjorie retamal",
+      "telefono": "+5695086784",
+      "estado": "confirmada",
+      "correo": "marjorie.srh@gmail.com",
+      "codigoQR": "EC-1788660513876-093593fa",
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "fechaInscripcion": {
+        "_seconds": 1788660513,
+        "_nanoseconds": 983000000
+      }
+    },
+    "YkJZoaa3TlTEyDB7cxE0": {
+      "telefono": "950845631",
+      "estado": "confirmada",
+      "correo": "juan.aravena@adventistas.org",
+      "nombreCompleto": "juan pruena",
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "codigoQR": "EC-1788661320242-8a2ba74e",
+      "fechaInscripcion": {
+        "_seconds": 1788661320,
+        "_nanoseconds": 378000000
+      }
+    },
+    "ZUXF5i1ychwi937HIQVp": {
+      "codigoQR": "EVT-001-ASIS-001",
+      "nombreCompleto": "Asistente de Prueba",
+      "fechaInscripcion": {
+        "_seconds": 1788227562,
+        "_nanoseconds": 0
+      },
+      "estado": "confirmada",
+      "correo": "asistente.prueba@correo.cl",
+      "telefono": "+56912345678",
+      "eventoId": "vUSbJ38N3dCRoUiYiM8i"
+    },
+    "a0750ae4d6a59e2f7cc1d7589222ded531edffba544f3f18c1c4cf81bec23045": {
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "PA3232",
+      "nombreCompleto": "iglesia adventistas del 7 dia",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789436042535-50afa4f2",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789436042,
+        "_nanoseconds": 332000000
+      }
+    },
+    "ao3Ucu92nhiu4OHWzlte": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "nombreCompleto": "May",
+      "correo": "marjorie.retamal@coanil.cl",
+      "telefono": "930299807",
+      "codigoQR": "EC-1789265156124-f86e6cad",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789265156,
+        "_nanoseconds": 746000000
+      }
+    },
+    "b293e2366620dc1c6ec370e0be76766f07720801e370b473751c82efb8d36377": {
+      "eventoId": "e9RfdiJgYCD7NKZOL0Xh",
+      "tipoDocumento": "pasaporte",
+      "numeroDocumento": "SCAACAS",
+      "nombreCompleto": "juan Aravena Gallardo",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+56 9 5084 5631",
+      "codigoQR": "EC-1789435838093-20e2a28d",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789435837,
+        "_nanoseconds": 988000000
+      }
+    },
+    "c033f729c1b6fb502ad118f6890092e1bd9362a778276b1e214164fa9668e558": {
+      "eventoId": "7BmEO1eikzPLDJkKbKnQ",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "174216495",
+      "nombreCompleto": "juan Aravena Gallardo",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+56 9 5084 5691",
+      "codigoQR": "EC-1789436239418-e4b834f5",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789436239,
+        "_nanoseconds": 356000000
+      }
+    },
+    "d5d04e69de549c26941f7c461346a6433b95d6c1aa1119a4b2ba1c4a5b5a3380": {
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "tipoDocumento": "rut",
+      "numeroDocumento": "174216495",
+      "nombreCompleto": "marjorie retamal",
+      "correo": "juan.aravena@adventistas.org",
+      "telefono": "+569508678",
+      "codigoQR": "EC-1789315848606-7e884af9",
+      "estado": "confirmada",
+      "fechaInscripcion": {
+        "_seconds": 1789315848,
+        "_nanoseconds": 579000000
+      }
+    },
+    "sWnW6hmy1ADUnAAq9wmz": {
+      "estado": "confirmada",
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "correo": "juan.aravena.90@gmail.com",
+      "nombreCompleto": "juan pruena2",
+      "codigoQR": "EC-1788719075163-694c2b95",
+      "telefono": "950845631",
+      "fechaInscripcion": {
+        "_seconds": 1788719075,
+        "_nanoseconds": 116000000
+      }
+    }
+  },
+  "jornadas": {
+    "AWuhvBfGPb4ERHBuLVou": {
+      "eventoId": "7BmEO1eikzPLDJkKbKnQ",
+      "fecha": "2026-09-23",
+      "inicio": "08:15",
+      "termino": "17:15",
+      "almuerzoHabilitado": true,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789348334,
+        "_nanoseconds": 665000000
+      }
+    },
+    "IRfXpDWkKMYU9ZQ9q27D": {
+      "eventoId": "vUSbJ38N3dCRoUiYiM8i",
+      "fecha": "2026-08-25",
+      "inicio": "16:16",
+      "termino": "19:16",
+      "almuerzoHabilitado": false,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1787685382,
+        "_nanoseconds": 962000000
+      }
+    },
+    "KDrIYhJz3d9tGhyRWMLV": {
+      "inicio": "09:00",
+      "almuerzoHabilitado": true,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "eventoId": "NMphIjS4TXLc20hlyqY2",
+      "fecha": "2026-09-06",
+      "termino": "21:00",
+      "fechaCreacion": {
+        "_seconds": 1788719412,
+        "_nanoseconds": 975000000
+      }
+    },
+    "e1JoLBhYdWmz4NIepvbK": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "fecha": "2026-09-13",
+      "inicio": "08:30",
+      "termino": "16:30",
+      "almuerzoHabilitado": true,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789265618,
+        "_nanoseconds": 749000000
+      }
+    },
+    "p8IUwSc0VUXNpmZi3B7l": {
+      "eventoId": "e9RfdiJgYCD7NKZOL0Xh",
+      "fecha": "2026-09-18",
+      "inicio": "10:15",
+      "termino": "13:00",
+      "almuerzoHabilitado": false,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789402361,
+        "_nanoseconds": 111000000
+      }
+    },
+    "rRuDbVuHXcPbXLOef5zP": {
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "fecha": "2026-09-12",
+      "inicio": "22:05",
+      "termino": "23:06",
+      "almuerzoHabilitado": false,
+      "creadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "fechaCreacion": {
+        "_seconds": 1789261546,
+        "_nanoseconds": 300000000
+      }
+    }
+  },
+  "solicitudesPalabra": {
+    "0fca3L7w3R7CC0ET6tb4": {
+      "inscripcionId": "E4Vrhm3MwPgWZMI32O36",
+      "eventoId": "vxKXGM09T3YwjF1SkE2N",
+      "jornadaId": "rRuDbVuHXcPbXLOef5zP",
+      "solicitud": "hola pruena de pregunta",
+      "registradoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+      "fechaSolicitud": {
+        "_seconds": 1789262187,
+        "_nanoseconds": 582000000
+      },
+      "revisadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "estado": "atendida",
+      "fechaRevision": {
+        "_seconds": 1790004584,
+        "_nanoseconds": 931000000
+      }
+    },
+    "k2h3KSXj2NS96Nor30WK": {
+      "orden": 1,
+      "inscripcionId": "",
+      "fechaSolicitud": {
+        "_seconds": 1788228193,
+        "_nanoseconds": 0
+      },
+      "jornadaId": "",
+      "pregunta": "",
+      "revisadoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2",
+      "estado": "pendiente",
+      "fechaRevision": {
+        "_seconds": 1790004578,
+        "_nanoseconds": 412000000
+      }
+    }
+  },
+  "usuarios": {
+    "47q6FWHwrBS6RSJyuGObnpIXYPf2": {
+      "fechaCreacion": {
+        "_seconds": 1788662824,
+        "_nanoseconds": 0
+      },
+      "activo": true,
+      "correo": "recepcionista@eventcontrol.cl",
+      "nombreCompleto": "Recepcionista de Prueba",
+      "rol": "recepcionista"
+    },
+    "cBRwgtBIEDfbsFLoSuvKxNMmLVe2": {
+      "nombreCompleto": "Juan Aravena Gallardo",
+      "correo": "juan.aravena@adventistas.org",
+      "rol": "administrador",
+      "activo": true,
+      "fechaCreacion": {
+        "_seconds": 1787081457,
+        "_nanoseconds": 0
+      }
+    }
+  }
+}

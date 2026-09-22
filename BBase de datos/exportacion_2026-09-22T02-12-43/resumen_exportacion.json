@@ -1,0 +1,35 @@
+{
+  "proyecto": "eventcontrol-230f1",
+  "fechaExportacionUTC": "2026-09-22T02:12:47.876Z",
+  "totalColecciones": 7,
+  "colecciones": {
+    "asistencias": {
+      "cantidadDocumentos": 8,
+      "archivo": "export_asistencias.json"
+    },
+    "entregasAlmuerzo": {
+      "cantidadDocumentos": 3,
+      "archivo": "export_entregasAlmuerzo.json"
+    },
+    "eventos": {
+      "cantidadDocumentos": 6,
+      "archivo": "export_eventos.json"
+    },
+    "inscripciones": {
+      "cantidadDocumentos": 20,
+      "archivo": "export_inscripciones.json"
+    },
+    "jornadas": {
+      "cantidadDocumentos": 6,
+      "archivo": "export_jornadas.json"
+    },
+    "solicitudesPalabra": {
+      "cantidadDocumentos": 2,
+      "archivo": "export_solicitudesPalabra.json"
+    },
+    "usuarios": {
+      "cantidadDocumentos": 2,
+      "archivo": "export_usuarios.json"
+    }
+  }
+}
