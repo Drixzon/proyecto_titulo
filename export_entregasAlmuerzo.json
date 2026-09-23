@@ -1,0 +1,34 @@
+{
+  "Jl3eg6JvrMgbqm03c1PS": {
+    "fechaHoraEntrega": {
+      "_seconds": 1788227930,
+      "_nanoseconds": 0
+    },
+    "entregado": true,
+    "inscripcionId": "ZUXF5i1ychwi937HIQVp",
+    "jornadaId": "IRfXpDWkKMYU9ZQ9q27D",
+    "registradoPor": "cBRwgtBIEDfbsFLoSuvKxNMmLVe2"
+  },
+  "YkJZoaa3TlTEyDB7cxE0_KDrIYhJz3d9tGhyRWMLV": {
+    "inscripcionId": "YkJZoaa3TlTEyDB7cxE0",
+    "entregadoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "asistenciaId": "YkJZoaa3TlTEyDB7cxE0_KDrIYhJz3d9tGhyRWMLV",
+    "estado": "entregado",
+    "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+    "fechaHoraEntrega": {
+      "_seconds": 1788722538,
+      "_nanoseconds": 722000000
+    }
+  },
+  "sWnW6hmy1ADUnAAq9wmz_KDrIYhJz3d9tGhyRWMLV": {
+    "jornadaId": "KDrIYhJz3d9tGhyRWMLV",
+    "inscripcionId": "sWnW6hmy1ADUnAAq9wmz",
+    "estado": "entregado",
+    "entregadoPor": "47q6FWHwrBS6RSJyuGObnpIXYPf2",
+    "asistenciaId": "sWnW6hmy1ADUnAAq9wmz_KDrIYhJz3d9tGhyRWMLV",
+    "fechaHoraEntrega": {
+      "_seconds": 1788722050,
+      "_nanoseconds": 67000000
+    }
+  }
+}
